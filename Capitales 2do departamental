@@ -1,0 +1,19 @@
+\documentclass[]{article} 
+\usepackage{fullpage}
+\title{ \LARGE \vspace{-2.5cm} \textbf{ Mercado de Capitales 
+		\\ Primer Departamental \\ Laboratorio de apuntes y ejercicios \#02:
+		 \\ Teoría del interés y Matemáticas Financieras}}
+ 
+\author{ Profesor: Dr.en C. Josué Alan Cantú Esquivel*\\ 
+Alumno Jorge Diego Valdez Fonseca\\ \normalsize Semestre: Agosto 2024 - Enero 2025 \vspace{0.5cm} 
+\\ \ Facultad de Economía UNAM — 26 de noviembre de 2024  }
+
+\begin{document}
+\maketitle
+
+\section*{{\LARGE Instrucciones:}
+	{\\ \setlength{\parindent}{1.0} \large Los problemas enunciados a continuación pertenecen a los primeros tópicos de Matemáticas Financie-
+	ras pertenecientes a la materia del semestre en cuestión. Esta actividad (en conjunto con las posteriores que se encarguen a los alumnos) tendrán una ponderación adicional sobre la nota del departamental. En este departamental se pondrá énfasis en la valuación y construcción de herramientas y rutinas de progra- mación ocupando lenguajes desde LATEX, Visual Basic hasta Python, con aplicaciones directas en el mercado financiero mexicano. }}
+
+
+\end{document}
