@@ -17,3 +17,100 @@ Alumno Jorge Diego Valdez Fonseca\\ \normalsize Semestre: Agosto 2024 - Enero 20
 
 
 \end{document}
+
+############################################################################################################################################################
+"Principio del documento de latex".
+\documentclass[]{article} 
+
+%opening
+\title{\Huge Mercado de Capitales \\ \Large Primer Departamental \\ \Large Laboratorio de apuntes y ejercicios}
+\author{\Large Profesor: Dr. en C. Josué Alan Cantú Esquivel* \\ \vspace{0.5cm} \normalsize Alumno Jorge Diego Valdez Fonseca}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% Aquí puedes añadir el resumen del documento
+\end{abstract}
+
+\section{}
+% El cuerpo del documento sigue aquí
+
+\end{document}
+
+######################################################################################################################################
+Tipos de letra
+\tiny – Muy pequeño
+\scriptsize – Tamaño de fuente pequeño
+\footnotesize – Tamaño de fuente de nota al pie
+\small – Fuente pequeña
+\normalsize – Tamaño normal (predeterminado)
+\large – Grande
+\Large – Muy grande
+\LARGE – Extra grande
+\huge – Más grande
+\Huge – El tamaño más grande
+
+#########################################################################################################################################
+#########################################################################################################################################
+#########################################################################################################################################
+"Mi trabajo "
+
+\documentclass[]{article} 
+\usepackage{fullpage}
+\setlength{\parindent}{0.5cm}
+\setlength{\parskip}{0.10cm}
+
+\title{ \LARGE \vspace{-2.5cm} \textbf{ Mercado de Capitales 
+		\\ Primer Departamental \\ Laboratorio de apuntes y ejercicios \#02:
+		 \\ Teoría del interés y Matemáticas Financieras}}
+ 
+\author{ Profesor: Dr.en C. Josué Alan Cantú Esquivel*\\ 
+Alumno Jorge Diego Valdez Fonseca\\ \normalsize Semestre: Agosto 2024 - Enero 2025 \vspace{0.5cm} 
+\\ \ Facultad de Economía UNAM — \date26 de noviembre de 2024  }
+
+\begin{document}
+\maketitle
+\begin{flushleft}
+	\textbf{{\LARGE Instrucciones:}} 
+\end{flushleft}
+
+\normalsize Los problemas enunciados a continuación pertenecen a los primeros tópicos de Matemáticas Financieras pertenecientes a la materia del semestre en cuestión. Esta actividad (en conjunto con las posteriores que se encarguen a los alumnos) tendrán una ponderación adicional sobre la nota del departamental. En este departamental se pondrá énfasis en la valuación y construcción de herramientas y rutinas de programación ocupando lenguajes desde LATEX, Visual Basic hasta Python, con aplicaciones directas en el mercado financiero mexicano. 
+
+
+\noindent
+\textbf{\normalsize \textbf{info}:} Se espera que al finalizar el curso, los alumnos cuenten con la capacidad de comprender y aplicar los procesos de diseño, planteamientos y empleo de diversos modelos cuantitativos ocupados en los mercados financieros y en la valuación corporativa.
+
+
+El alumno que resuelva perfecta y detalladamente todos los ejercicios solicitados, y estén presentados a mano (a dos tintas) y en LATEX(siendo el código enviado al instructor de la materia), obtendrá dospuntos sobre la calificación del parcial. La fecha de entrega será el mismo día que el de la aplicación
+del examen del departamental correspondiente.
+
+
+\section*{1. Teoría del interés} 
+\normalsize
+“El interés compuesto es la octava maravilla del mundo. Quien lo entiende, lo gana, quien no . . . lo paga”.
+Albert Einstein.
+
+¿Cuánto vale el dinero? El valor del dinero se deriva de lo que se puede hacer con el. Con ello, cualquier agente económico racional preferiría recibir una unidad monetaria hoy a recibirla en el futuro (en un año, dos, seis, etc.) debido a distintos factores tales como liquidez, riesgo de impago o inflación. Por esta razón
+si inviertes un peso hoy esperarías que dentro de un año te sea devuelto más que tu inversión de un peso. Así, las tasas de interés definirán cuanto “más” de un peso recibirás al final del año.
+
+Actuarialmente, el interés puede ser definido como aquella compensación que un deudor paga al prestamista de capital por el uso del dinero. En teoría el interés no necesariamente está expresado en las mismas unidades que el capital, pero siempre se busca que bajo “mercados equilibrados”, el interés pagado sea una medida justa por el empleo del capital prestado. 
+
+Antes de ingresar de lleno al tema de tasas de interés, es bueno comentar las convenciones de conteo de días que son más usadas en el mercado mexicano. Denotaremos por f1 y f2 dos fechas de las cuales
+\footnote{\footnotesize *Profesor e Investigador en la SEPI ESE IPN. Queda estrictamente prohibida la distribución de este material sin antes consultarlo
+con el creador del contenido. En caso de que se comparta, se solicita reconocer el trabajo y la autoría de quien lo elaboró.}
+
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+\noindent
+queremos contabilizar su diferencia en años (pueden ser por fechas de expiración de contratos o plazos al vencimiento). A continuación se expresa la diferencia en años bajo cada convención:
+
+Convención ACT/360: 
+Convención ACT/364:
+Convención ACT/365:
+
+\end{document}
+
+
