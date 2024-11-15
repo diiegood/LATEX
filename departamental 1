@@ -1,0 +1,504 @@
+\documentclass[]{article} 
+%paqueterias del formato personalizado
+\usepackage{fullpage}
+\setlength{\parindent}{0.5cm}
+\setlength{\parskip}{0.15cm}
+\usepackage{geometry}
+\newgeometry{bottom = 2.5cm, top = 2.5cm }
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{extarrows}
+\usepackage{amsmath}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz, pgfplots}
+\usepackage{amsfonts}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\pgfplotsset{compat=1.17}
+
+%se define la funcion para el color de los cuadros.
+\newtcolorbox[auto counter, number within=section]{estilo_caja1}[2][]{coltitle=black!80!black, colback=yellow!20, colframe=blue!40, title=#2,}
+
+%Para definir los colores de los cuadros de pregunta. 
+\definecolor{borde}{RGB}{100,52,123}
+\definecolor{fondo}{RGB}{159,229,252}
+\definecolor{titulo}{RGB}{120,202,53}
+%\usepackage[a4paper, bottom=1.5cm]{geometry} 
+%\linespread{1.5} %para poner la separacion entere renglones
+%\usepackage[hang,flushmargin]{footmisc}
+
+\title{ \LARGE \vspace{-2.5cm} \textbf{ Mercado de Capitales 
+		\\ Primer Departamental \\ Laboratorio de apuntes y ejercicios \#01:
+		\\ Principios de Economía de la empresa}}
+
+\author{\large  Profesor: Dr.en C. Josué Alan Cantú Esquivel \footnote{\footnotesize 
+		Profesor e Investigador en la SEPI ESE IPN. Queda estrictamente prohibida la distribución de este material sin antes consultarlo con el creador del contenido. En caso de que se comparta, se solicita reconocer el trabajo y la autoría de quien lo elaboró.} \\ 
+	Alumno Jorge Diego Valdez Fonseca\\ \large Semestre: Agosto 2024 - Diciembre 2025 \vspace{0.5cm} \\ \ Facultad de Economía UNAM —  26 de noviembre de 2024}
+\date{}
+
+	\begin{document}
+		\maketitle 
+		\begin{flushleft} \vspace{-0.9cm}
+		\textbf{{\LARGE Instrucciones:}} 
+	    \end{flushleft}
+		\vspace{-0.2cm}
+		\small 
+		
+		Los problemas enunciados a continuación pertenecen a los primeros tópicos de Matemáticas Financieras pertenecientes a la materia del semestre en cuestión. Esta actividad (en conjunto con las posteriores que se encarguen a los alumnos) tendrán una ponderación adicional sobre la nota del departamental. En este departamental se pondrá énfasis en la valuación y construcción de herramientas y rutinas de programación ocupando lenguajes desde LATEX, Visual Basic hasta Python, con aplicaciones directas en el mercado financiero mexicano.  
+		
+		Esta actividad (en conjunto con las posteriores que se encarguen a los alumnos) tendrán una ponderación adicional sobre la nota del departamental. Durante el curso se pondrá énfasis en la valuación y construcción de herramientas y rutinas de programación ocupando lenguajes desde LATEX, Visual Basic hasta Python, con aplicaciones directas en el mercado financiero mexicano.
+
+%primer cuadro de informacion
+\begin{tcolorbox} 
+\noindent 
+\textbf{\normalsize \textbf{Info}:}
+\setlength{\parindent}{0.5cm}
+
+ Se espera que al finalizar el curso, los alumnos cuenten con la capacidad de comprender y aplicar los procesos de diseño, planteamientos y empleo de diversos modelos cuantitativos ocupados en los mercados financieros y en la valuación corporativa.
+	
+\indent El alumno que resuelva perfecta y detalladamente todos los ejercicios solicitados, y estén presentados a mano (a dos tintas) y en LATEX(siendo el código enviado al instructor de la materia), obtendrá dos puntos sobre la calificación del parcial. La fecha de entrega de  laboratorios estará sujeta a criterio del profesor y de los alumnos.
+\end{tcolorbox}
+\vspace{-0.15cm}
+
+\section* {El papel del economista en las empresas y en la administración financiera.}\vspace{-0.25cm}\normalsize 
+
+  Año con año, los mercados laboral y financiero se vuelven más competitivos. En ellos existen profesionales cada vez mejor capacitados y que cuentan con herramientas sofisticadas con las que puedan conseguir ganancias por arriba del promedio. Los administradores financieros buscan minimizar sus costos y tratan de ofrecer nuevos instrumentos para el manejo óptimo de los recursos de una firma, con el apoyo de profesionales que tengan conocimientos a la vanguardia en habilidades analíticas y empresariales.	
+
+ Para lograr estos objetivos, se requieren conocimientos financieros cada vez más profundos y aplicados.Por ello, el departamento de Economía financiera busca formar a estudiantes quienes sobresalgan en un
+ mercado tan competitivo, brindándoles las herramientas para que sean de los primeros profesionales a nivel nacional, y que estén listos para aplicar el conocimiento y ser capaces de ofrecer contribuciones intelectuales relevantes para la práctica profesional en el estudio 
+de las organizaciones y los mercados en los que participen.
+
+ \newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+%Aqui empieza la hoja 2
+
+En sintonía, en este curso de Mercado de Capitales parte de un enfoque científico, con el objetivo de formar profesionales con sólidos conocimientos en el ámbito de la teoría financiera, valores éticos y pensamiento crítico, capacitados en el manejo de sofisticados modelos de valuación corporativa y técnicas de análisis
+financiero para tomar las mejores decisiones financieras y resolver sofisticados problemas de inversión,
+financiamiento, gestión del capital y la administración de riesgos tanto de empresas como de instituciones
+financieras, entidades gubernamentales y otros organismos.
+
+\vspace{-0.3cm}
+\section* {Casos de estudio introductorios a los Mercados de Capitales.}
+
+%\begin{flushleft} 
+%	\textbf{{\large Casos de estudio introductorios a las Mercado de Capitales:}} 
+%\end{flushleft}
+\vspace{-0.1cm}
+\normalsize 
+
+Un economista es un especialista en modelos de análisis que permiten comprender como los agentes económicos toman decisiones día a día en todos los ámbitos sociales, ya sea como individuos, como empre-
+sa o como país y como parte de un entorno globalizado. Son capaces de desempeñarse en cualquier ámbito de la sociedad sin importar si es público, privado o financiero. Su trabajo consiste en proponer estrategias
+que permitan que las familias, las empresas o el gobierno tomen decisiones óptimas y eficientes. 
+
+Al finalizar el curso, se espera que los alumnos cuenten con la capacidad de comprender y aplicar los procesos de diseño, planteamientos y empleo de diversos modelos cuantitativos ocupados en el sector financiero. En este departamental se pondrá énfasis en el desarrollo de la lógica, planteamiento y resolución de problemas financieros acompañados de la construcción de herramientas y rutinas de programación, ocupando lenguajes desde LATEX, Visual Basic hasta Python, con aplicaciones directas en el mercado financiero mexicano.
+
+%segunda nota 
+\begin{tcolorbox}
+\textbf{Nota:}
+\setlength{\parindent}{0.3cm}
+
+{"Si no trabajas, te quedas pobre; si trabajas, te vuelves rico. Al hombre honrado, Dios le bendice; al malvado, su fama lo destruye".
+
+"Pobre es el que trabaja con mano negligente, mas la mano de los diligentes enriquece". (Proverbios 10:4)}
+\end{tcolorbox}
+
+%primera pregunta
+\section*{Problemas}
+%\rule{\linewidth}{0.1pt} / para poner una linea divisioria
+\vspace{-0.15cm} 
+\begin{estilo_caja1}[colframe=blue!40, colback=yellow!20, coltitle=black!80!black]{Pregunta 1}
+Adidas ha tenido buenos resultados en la venta de sus conjuntos deportivos y planea ofrecer su nueva colección de temporada a tiendas minoristas con descuentos directos para los clientes y volver más atractivos sus nuevos conjuntos. Los costos de adquisición por unidad (es decir, el conjunto completo) para las distribuidoras es de \$33.00 usd. Para conveniencia con los distribuidores, la productora acuerda incluir la etiqueta en el precio del producto para evitar costos y gastos adicionales en que incurran los distribuidores. 
+\\
+¿Qué precio deberá de imprimirse en la etiqueta para que el distribuidor pueda disminuir el precio en 20\% y (paralelamente) obtener el 20\% de utilidades sobre los costos?
+\end{estilo_caja1}
+\vspace{-0.45cm}
+\section*{Solucion 1:}
+\vspace{-0.35cm}
+{\large \noindent Costes $\$33.0$ usd / ud. $\hspace{2.0cm}  p(q) = ( (q) + v (q) )  \hspace{1.8cm} p = c + v 
+\\ C = \$33.0 
+\\ V = \$6.6 \hspace{1.3cm} \$33.0 (.2) = \$6.6  \hspace{0.35cm} \$33.0 + \$6.6 =  \$39.6  \hspace{1.45cm}    \$39.6 \longrightarrow 80\%
+\vspace{0.20cm}
+\\ P = \$39.6    \hspace{1.15cm}   \$39.6 * 1 = {\frac{39.6}{0.8}} = \$49.50  
+\\ \\  \Delta20\% P +  \Delta20\% U = \$9.6 + \$9.9 \hspace{0.15cm} $
+%siguiente pagina.
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+\vspace{-0.35cm}
+\section*{}
+\noindent Por lo tanto, se deberá etiquetar el precio del producto a \$49.50 usd por unidad para posteriormente poder aplicar un descuento de 20\% donde tendria un valor de \$39.6 asi tener un margen de utilidad de 20\% sobre el costo base del producto de  \$33.0 
+ \vspace{0.55cm}
+ \begin{estilo_caja1}[colframe=blue!40, colback=yellow!20, coltitle=black!80!black]{Pregunta 2}
+ Una empresa fabrica un producto que tiene costos variables de \$6.00 usd por unidad, y costos fijos de \$80,000.00 usd. La empresa es precio aceptante y en el mercado, cada unidad que produce tiene un precio de venta de \$7.00 usd.
+ Determine el número de unidades que deben venderse para que la empresa obtenga una utilidad
+ de \$60’000.00 usd.
+ \end{estilo_caja1}
+\vspace{-0.45cm}
+%resolucion del segundo problema
+\section*{Solucion 2:} 
+\noindent Utilidad = Precio - Costos  \hspace{1.2cm}  CT = CF + CV  
+\hspace{1.2cm}  Cv = c (q) 
+\vspace{-0.45cm}
+
+\noindent \\CV = \$6.0 \vspace{0.35cm}
+\\ CF = \$ 80,000  \hspace{0.7cm} $ 60e^{3} = 7q - 80e^{3} - 6q $ $\hspace{0.35cm}  \longrightarrow \hspace{0.35cm} $ $ 60e^{3} + 80e^{3} = 7q + 6q $
+	\vspace{0.45cm}
+	\\ P = \$ 7.00 \vspace{0.15cm} \hspace{2.2cm} $ = 140e^{3} = 13q $ \hspace{1.2cm} $ q = \dfrac{140,000}{13} = 10,764.23 $ \hspace{0.19cm} ud
+
+
+%aqui empieza la comprobacion 
+\noindent \textbf{{\large Comprobación:}} 
+\vspace{0.5cm}
+\noindent\\$  U = p (q) - c (q) $ \vspace{0.35cm}
+\\  $U = 7 (140 e^{3}) - ( 80 e^{3} + 6 ( 140 e^{3} ) )$ $\hspace{0.35cm}  \longrightarrow \hspace{0.35cm} $ $980 e^{3} - (920 e^{3}) = 60 e^{3} \hspace{0.20cm} o \hspace{0.20cm} 60,000$
+\vspace{0.35cm}
+\\ 
+\noindent Por lo que podemos ver que se comprueba que con 10,764 unidades se logra obetener una utlidad de \$60,000 usd.
+
+%tercer pregunta
+ \vspace{0.55cm}
+\begin{estilo_caja1}[colframe=blue!40, colback=yellow!20, coltitle=black!80!black]{Pregunta 3}
+Se invirtió un monto de \$10’000.00 usd en dos oportunidades de inversión: una en grupo Vanguard y otra en Ark Invest. Al final del primer trimestre, las oportunidades reportaron rendimientos del 6\% y del 5.75 \%, respectivamente sobre los montos de capital invertidos.
+
+Calcule los montos de capital que se le asignaron a cada inversión, si el total que se ganó al final del trimestre por ambas inversiones fue de \$588.75 usd.
+\end{estilo_caja1}
+
+\section*{Solucion 3:} 
+\vspace{-0.35cm}
+\noindent \textbf{Valores:} 
+\\ 
+\$10,000 usd | yield :  6\% \vspace{0.35cm} | yield : 5.75\% \vspace{0.35cm} | 588.75 \vspace{0.35cm} | 10,588 usd \vspace{0.35cm} |  So = 10,000 \vspace{0.35cm}
+\vspace{-1.35cm}
+$\dfrac{S_0(1+i)^n}{S_0\left(1+\dfrac{i}{n}\right)^n}$ 
+$\hspace{0.35cm}  \longrightarrow \hspace{0.35cm}$
+$Se^{3}(1+0.06) + Se^{3}(1+0.0575) = 5,300 + 5,287.5
+= 10,587.7 $  
+\vspace{0.35cm}
+\\ $10,588.75 = x(1+0.06)+(10e^3- x )(1+0.0575) \vspace{0.35cm}
+\\10,588.75 = 1.06x + (10,000-x)+ 1.0575x \vspace{0.35cm} 
+\\10,588.75 = 1.06 + 10,575 - 1.0575x   \vspace{0.35cm}
+\\x= 5e^3 = 5,000 $ \vspace{0.35cm} \vrule \vspace{0.35cm} $10e^3 - x = 4,500 $\vspace{-0.05cm}
+\\
+\noindent \textbf{{\large Comprobación:}} 
+\vspace{-0.05cm}
+\noindent
+\\$10,588.75 - 10,575 = 1.06x - 1.0575x \hspace{0.25cm}  \longrightarrow \hspace{0.25cm} 13.75 = 0.002500x$
+\\$-0.002500x = -13.75$
+
+\begin{estilo_caja1}[colframe=blue!40, colback=yellow!20, coltitle=black!80!black]{Pregunta 4}
+El consejo de administración de Exxon Mobile debe amortizar parte del valor nominal de sus obliga-
+ciones de deuda dentro de dos años.Para la fecha de amortización, se necesitarán \$1’102’000.00 usd. Supóngase que hoy, el consejo aparta un total de \$1’000’000.00 usd para hacer frente a la obligación. ¿A qué tasa de interés compuesto anualmente (capitalizable una vez al año) deberá de invertirse el monto apartado, para que en el futuro sea capaz de hacer frente a la amortización de intereses de los certificados de deuda?
+\end{estilo_caja1}
+\vspace{-0.55cm}
+\section*{Solucion 4:} 
+\vspace{-0.55cm}
+\noindent \textbf{(Se busca amortizar el Nominal) \hspace{0.35cm}  Valores:} 
+\\ 
+\ n = 2 años | S = \$1,102,000 usd | \$1,000,000 usd |   i = ? 
+\vspace{0.15cm}
+\\ 
+%funcion de ecuacion.
+\[1.102e^3 = 1e^6\left[1+ \frac{i}{1} \right]^{1*2}\quad \xrightarrow{\text{Despejando:}}i=\quad \left[ \frac{1.102e^3}{1e^6} \right]^{\left( \frac{1}{2} \right)} - 1\] 
+
+\vspace{0.35cm}
+\noindent \\ \textbf{como resultado queda}  $1.04976188 - 1 = 0.0497678777608 = 4.97678777608\% \vspace{0.35cm}
+$
+$\noindent Kf= 1e^6\left[1+ \frac{0.0497618776}{1} \right]^{1*2}$
+= $1e^6(1+0.049761877)^2 = 1e^6(1,102,000)=1,101,999.99
+$
+\noindent Por lo tanto la \textbf{tasa objetivo} se expresa en \textbf{4.97678777608\%}.
+\\
+
+\begin{estilo_caja1}[colframe=blue!40, colback=yellow!20, coltitle=black!80!black]{Pregunta 5}
+Una empresa de bienes raíces es propietaria de un conjunto de 70 departamentos. Cada departamentopuede rentarse por un mínimo de \$250.00 usd al mes. Sin embargo, datos históricos demuestran que por cada incremento de \$10.00 usd respecto al precio de renta se desalojan dos departamentos (la elasticidad respecto al precio es muy rígida). 
+
+El holding desea obtener ingresos derivados de la renta de los departamentos cuando menos por\$17’980.00 de forma mensual. Con ello, usted asesóreles respecto al precio óptimo para la renta de los departamentos que no provoque tantos abandonos pero que maximice los ingresos potenciales.
+\end{estilo_caja1}
+
+\section*{Solucion 5:} 
+\vspace{-0.35cm}
+\noindent \textbf{Valores:}     
+
+\noindent Relacion inversamente proporcional por cada aumento de X disminuye Y, estando el departamento en funcion de la renta :  
+
+\noindent$\Delta\$10 usd(+10 x)$   \hspace{1.35cm} q = $70 (-2 y)$  \hspace{1.35cm}  $y = mx + b $
+   
+\noindent \textbf{ Por lo que la funcion queda :} \[ q= 70 -  2 \left[ \frac{r-250}{10} \right]
+\rightarrow 17,980 = r \left[ 70 - 2\right] \left[ \frac{r-250}{10} \right] \] 
+\[ 17,980 =  70r - 2r \left[ \frac{r-250}{10} \right]  \hspace{0.45cm} 17,980 =  70r \left[ \frac{2r^2-250}{10} \right]  \hspace{0.35cm} \rightarrow 17,980 = 700r + 2r^2 + 500r \]
+\[ = 17,980 = 1200r -2r^2 \hspace{0.55cm} \longrightarrow \hspace{0.55cm} 2r^2 - 1200r + 17,980\] 
+
+\noindent \textbf{Resolviendo la ecuacion de 2do grado: }
+\[ 1200\sqrt{\dfrac{1200^2 - 4(2)(179,800)}{2(2)}} \longrightarrow 1200\sqrt{\dfrac{1,440,000-1,438,000}{4}} = 1200\sqrt{\frac{1600}{4}} \]
+
+\hspace{1.30cm}\textbf{Soluciones  \hspace{4.20cm}  Comprobacion:}
+\\ \noindent\[ \frac{1200 + 40 }{4} = 310 \hspace{1.85cm} 290 \left[ 70- 2 \left[ \frac{290 - 250}{10} \right] \right] = 17,980 \]
+\\ \noindent \[\frac{ 1200 - 40}{4} = 290 \hspace{1.85cm}  310 \left[ 70- 2 \left[ \frac{310 - 250}{10} \right] \right] = 17,980 \]
+\noindent \textbf{Maximo es la derivada de: } $4r + 1200 \rightarrow f'_(r) = 4$
+\vspace{0.45cm}
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+\section{Grafica}
+
+	\begin{picture}(180,180)
+		% Ejes
+		\put(20,10){\vector(0,1){160}}  % Eje Y
+		\put(10,20){\vector(1,0){160}}  % Eje X
+		
+		% Líneas horizontales y verticales que marcan las distancias
+		\multiput(15,60)(0,60){0}{\line(1,0){10}}  % Líneas horizontales en Y
+		\multiput(60,15)(60,0){0}{\line(0,1){10}}  % Líneas verticales en X
+		
+		% Puntos en la gráfica
+		\put(68,120){\circle*{5}}  % Punto (x1, y1)
+		\put(128,60){\circle*{5}}  % Punto (x2, y2)
+		
+		% Cuadros de distancia
+		\put(68,20){\dashbox{3}(0,100){}}
+		\put(129,20){\dashbox{3}(0,40){}}
+		\put(20,60){\dashbox{3}(110,0){}}
+		\put(20,120){\dashbox{3}(40,0){}}
+		
+		
+		% Etiquetas de los ejes y puntos
+		\put(60,10){\makebox(0,0){250}}
+		\put(160,10){\makebox(0,0){310}}
+		\put(10,60){\makebox(0,0){35}}
+		\put(10,160){\makebox(0,0){70}}
+		\put(10,180){\makebox(0,0){}}
+		\put(180,10){\makebox(0,0){}}
+		\put(120,10){\makebox(0,0){270}}
+		\put(10,120){\makebox(0,0){55}}
+		% Etiquetas de las distancias
+		\put(90,0){\makebox(0,0){precio (usd)}}
+		\put(-5,90){\rotatebox{90}{\makebox(0,0){departamentos}}}
+		
+		% Etiquetas de los puntos
+		\put(130,60){$(35, 270)$}
+		\put(60,130){$(60, 255)$}
+		
+		% Líneas diagonales
+		%\put(0,180){\line(1,-1){60}}
+		%\put(60,119.5){\line(1,-1){60}}
+		%\put(60,120.5){\line(1,-1){60}}
+		%\put(60,119){\line(1,-1){60}}
+		%\put(180,0){\line(-1,1){60}}
+		
+		\put(20,168){\line(1,-1){150}} %eje DA
+	
+	\end{picture}
+
+
+
+\begin{estilo_caja1}[colframe=blue!40, colback=yellow!20, coltitle=black!80!black]{Pregunta 6}
+	Considere una empresa con la siguiente función tecnológica:
+	
+	\centering $ c(q) = \frac{1}{2}$
+	
+	Esta empresa se enfrenta a la siguiente demanda de mercado:
+	
+	 \centering $q(p) = 100 - 2p ; p \in  \left[0,50\right]$
+
+La empresa se comporta de manera competitiva y es precio aceptante en el mercado. Con ello, explique, demuestre y calcule:	
+\begin{itemize}
+	\item Equilibrio competitivo en oferta y demanda
+	\item Excedente agregado Marshalliano
+	\item Excedente del productor
+	\item Excedente del consumidor
+\end{itemize} 
+\end{estilo_caja1}
+\section*{Solucion 6:} 
+\vspace{-0.35cm}
+\noindent \textbf{Valores:}     
+
+\noindent Empresa Competitiva, precio aceptante, Equilibrio OA = DA , Maximizar, $( \Pi ); p(q) - c(q)$ por lo tanto se bede igualar y derivar e igualar a cero:  
+
+\noindent $2\pi  p - \frac{1}{2}q = 0 $ $\hspace{0.45cm}  $por lo que$ \hspace{0.45cm} 2q\rightarrow p = \frac{1}{2}q$ = 2p $\rightarrow$q(p)=2:OA
+
+\noindent$ 2p = 100 - 2p ,\rightarrow  4p = 100  \rightarrow  p = \frac{100}{4}= 25$   
+
+\noindent ecuacion de oferta agregada:  $ 2p = 2 * 25 = 50$ $\rightarrow 2p = q
+$
+
+\noindent ecuacion demanda agregada:    $ 100 - 25 * 2 =50 \rightarrow p=\frac{1}{2}q$
+
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+\noindent \textbf{Excedente Agregado Marshaliano:}
+\vspace{0.65cm}
+
+	\begin{picture}(180,180)
+	% Ejes
+	\put(20,10){\vector(0,1){160}}  % Eje Y
+	\put(10,20){\vector(1,0){160}}  % Eje X
+	
+	% Líneas horizontales y verticales que marcan las distancias
+	\multiput(15,60)(0,60){0}{\line(1,0){10}}  % Líneas horizontales en Y
+	\multiput(60,15)(60,0){0}{\line(0,1){10}}  % Líneas verticales en X
+	
+	% Puntos en la gráfica
+	\put(95,95){\circle*{5}{$(p,q^*)$}}  % Punto (x1, y1)
+	
+	% Cuadros de distancia
+	\put(95,20){\dashbox{3}(0,75){}}
+	\put(20,95){\dashbox{3}(75,0){}}
+
+	% Etiquetas de los ejes y puntos
+	\put(120,10){\makebox(0,0){}}
+	
+	% Etiquetas de las distancias
+	\put(90,0){\makebox(0,0){(*p = 25)}}
+	\put(-5,90){\rotatebox{90}{\makebox(0,0){(*q = 50 )}}}
+	
+	% Etiquetas de los puntos
+	\put(180,20){$DA = 100 - 2P$}
+	\put(180,180){$OA = 2p$}
+	\put(20,120){{\tiny {\small excendente }}}
+	\put(20,110){{\tiny {\small de consumidor}}}
+	\put(20,79){{\tiny {\small excendente }}}
+	\put(20,65){{\tiny {\small de productor}}}
+	\put(180,180){$$}
+	% Líneas diagonales
+	\put(20,170){\line(1,-1){150}} %eje DA
+	\put(20,20){\line(1,1){150}} %eje OA
+	
+\end{picture}
+\vspace{0.55cm}
+
+\noindent $EAM = EC +EP$
+
+\noindent $EAM \int_{_0}^{p*} (DA) * dp - \int_{_0}^{p*} (OA) * dp \hspace{0.35cm}\longrightarrow\hspace{0.35cm} EAM\int_{0}^{25}(100-2p) *dp -\int_{0}^{25}(2p)dp$
+
+\noindent $\int_{0}^{25}(100p-\frac{2p^2}{2}) dp - \int_{0}^{25}(\frac{2p^2}{2}) \hspace{0.35cm} \rightarrow \hspace{0.35cm} \left[100p - p^2\right] |_{0}^{25} \left[p^2\right]  |_{0}^{25}$
+
+\noindent $= 100(25)-(25)^2-(25)^2=1250$
+
+\noindent$\left[100p* 25 -(25)^2\right]$-$\left[1000-0^2\right]$ - $\left[25^2\right]$ - $\left[0^2\right]$
+
+\noindent \textbf{Calculando el excendente del consumidor}
+
+$\int_{0}^{p} = (DA) * 2p- p * q = 1875 - (25* 50) = 625$ 
+
+
+\noindent\textbf{Rotando el plano para el analisis del Excedente del Productor: }
+
+\noindent Se busca hayar las funciones inversas de Demanda Agregada y Oferta Agregada para encontrar el excendente del productor, quedando en nuevo plano tal que;
+
+
+\begin{picture}(180,180)
+	% Ejes
+	\put(20,10){\vector(0,1){160}}  % Eje Y
+	\put(10,20){\vector(1,0){160}}  % Eje X
+	
+	% Líneas horizontales y verticales que marcan las distancias
+	\multiput(15,60)(0,60){0}{\line(1,0){10}}  % Líneas horizontales en Y
+	\multiput(60,15)(60,0){0}{\line(0,1){10}}  % Líneas verticales en X
+	
+	% Puntos en la gráfica
+	\put(95,95){\circle*{5}{$(q,p^*)$}}  % Punto (x1, y1)
+	
+	% Cuadros de distancia
+	\put(95,20){\dashbox{3}(0,75){}}
+	\put(20,95){\dashbox{3}(75,0){}}
+	
+	% Etiquetas de los ejes y puntos
+	\put(120,10){\makebox(0,0){}}
+	
+	% Etiquetas de las distancias
+	\put(90,0){\makebox(0,0){(*q )}}
+	\put(-5,90){\rotatebox{90}{\makebox(0,0){(*p  )}}}
+	
+	% Etiquetas de los puntos
+	\put(180,20){$OA$}
+	\put(180,165){$DA $}
+	\put(20,120){{\tiny {\small excendente }}}
+	\put(20,110){{\tiny {\small de productor}}}
+	\put(20,79){{\tiny {\small excendente }}}
+	\put(20,65){{\tiny {\small de consumidor}}}
+	\put(180,180){$$}
+	% Líneas diagonales
+	\put(20,170){\line(1,-1){150}} %eje DA
+	\put(20,20){\line(1,1){150}} %eje OA
+	
+\end{picture}
+
+\noindent\textbf{Hayar funcion inversa:} 
+
+\noindent Ep = $\int_{0}^{q}OA -dq-p^*(q^*)$ $\rightarrow$ $\int_{2}^{50}$2p*dq*25*50
+
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+\noindent\textbf{Dadas las funciones:} 
+
+\noindent $OA=2p$   \hspace{1.95cm}   EP =$\int_{0}^{50} OA^{-1}* 2q -p^* * q^* $
+
+\noindent $q(p) = 2p;q=2p  OA^{-1}$
+
+\noindent $EP=\int_{0}^{50}\left[\frac{q}{2}\right] * dq - 1250 \hspace{0.15cm} \rightarrow \hspace{0.15cm} \int_{0}^{50} \frac{1}{2}q *dq-1250 \hspace{0.15cm} \rightarrow \int_{0}^{50}\frac{1}{2}q^2*dq-1250 $
+
+\noindent = $\frac{q^2}{4}|_{0}^{50} -1250 \xrightarrow{quedando;} 625-1,250 = -625$
+
+\noindent$ Ep = p^* (q^*) \int_{0}^{50} (OA)*2p \hspace{0.55cm} \rightarrow \hspace{0.55cm} Ep = 1250 - \int_{0}^{50}2p*dp $
+
+\noindent Ep = 1250 -$\int_{0}^{50} 2p *dp \hspace{0.55cm} \rightarrow \hspace{0.55cm} Ep = 1250 -\left[p^2\right] |_{0}^{25}$
+
+\noindent$ 1250 - (25^2) = 625$
+\begin{estilo_caja1}[colframe=blue!40, colback=yellow!20, coltitle=black!80!black]{Pregunta 7}
+Bayer produce distintos productos farmacéuticos, entre ellos termometros. El costo combinado de mano de obra y materiales es de \$5.00 usd por cada unidad y los costos fijos por el lote de producción son de \$60’000.00 usd.
+ 
+Si el precio de venta de cada termostato es de \$7.00 usd, calcule cual es el lote mínimo de producción para que la compañía reporte utilidades?
+\end{estilo_caja1}
+\section*{Solucion 7:} 
+\vspace{0.05cm}
+\noindent \textbf{Valores:}    
+\noindent \\C(q) = \$5 usd \hspace{0.35cm} P(q)= \$7 usd \vspace{0.35cm} \hspace{0.35cm} CF = \$ 60,000  \hspace{0.35cm} $CT = Cf + Cv $ \hspace{0.45cm} 
+$U = p * q - CT$
+\\ \noindent $CT = 60e^3 + 5q$ 
+$\hspace{0.25cm}  \longrightarrow \hspace{0.25cm} $$U_T = 7q -(60e^3 + 5q)$
+$\hspace{0.15cm} \rightarrow U_T = 60e^3 = 7q - 5q  $
+$\vspace{0.51cm}  = 2q - 60e^3 $
+\noindent $2q - 60e^3 = 0$ \hspace{0.35cm} $2q = 60e^3$ \hspace{0.35cm} q = $\dfrac{60e^3}{2} = 30e^3$
+
+\section* {¡El trío infalible: Física, Matemáticas y dinero!.}\vspace{-0.25cm}\normalsize 
+
+Este primer laboratorio fue la base para el siguiente sobre la teoría financiera del interés, el cual es un campo de estudio en finanzas que se enfoca en el análisis matemático y cuantitativo de los flujos de efectivo asociados con operaciones financieras que involucran el tiempo y el interés. Uno de los libros de referencia en este campo es "Theory of Interest" de Stephen Kellison.
+
+El libro 'Theory of Interest' es un recurso ampliamente utilizado para estudiar temas relacionados con el valor del dinero en el tiempo, tasas de interés, valor presente y futuro, anualidades, préstamos y bonos. La teoría del interés es fundamental para la toma de decisiones financieras, la valoración de activos y pasivos, y la comprensión de los conceptos de tiempo y riesgo en las finanzas.
+
+En sintonía, la materia cubrirá una serie de conceptos clave en el estudio de la teoría del interés, incluyendo:
+\vspace{-0.15cm}
+\begin{itemize}
+	\item \textbf{\ Valor del dinero en el tiempo:} Explorar cómo el valor del dinero cambia a lo largo del tiempo y cómo los flujos de efectivo futuros se comparan con los flujos de efectivo actuales.
+	\item \textbf{\ Tasas de interés:} Analizar diferentes tipos de tasas de interés, incluyendo tasas nominales, tasas efectivas y tasas reales.
+	\item \textbf{\ Anualidades y perpetuidades:} Examinar los conceptos de anualidades (flujos de efectivo iguales en intervalos regulares) y perpetuidades (flujos de efectivo infinitos) y cómo se valoran en diferentes
+	contextos financieros.
+	\item \textbf{\ Préstamos y amortización:} Cubriremos cómo se calculan los pagos periódicos y cómo se amortizan los préstamos con pagos constantes a lo largo del tiempo.
+	\item \textbf{\ Bonos:} Abordaremos la valoración de bonos con el apoyo de Bloomberg y Reuters, que representan deudas emitidas por gobiernos o empresas.
+	\item \textbf{\ Riesgo y rendimiento::} Estudiaremos la relación entre el riesgo y el rendimiento en los contextos financieros, así como de que manera se incorpora el riesgo en las decisiones de inversión y financiamiento.
+\end{itemize}
+
+Al respecto, remarcamos que la ciencia económica no es un cumulo de conocimientos. Es una manera de entender al mundo mediante un curso de descubrimiento, comprobación y revisión de supuestos. Con esto, los modelos matemáticos son esenciales para concebir a la Economía y a las Finanzas. Sin embargo, noté que ningún modelo establece al 100 \% las leyes que debe de seguir un mercado; los modelos son las herramientas base para un pensamiento aproximado, pues se basan en premisas que no son infalibles y pueden fracasar estrepitosamente.
+
+
+La finalidad de que se imparta el curso es por tener una responsabilidad con la sociedad estudiantil: procurar siempre el rigor académico en todos los servicios financieros. Nuestro objetivo principal es convertir el conocimiento matemático en una inversión sostenible y que genere riqueza para quienes lo toman. Tenemos la esperanza de formar economistas, científicos de datos y profesionales entusiastas de las matemáticas aplicadas formados bajo esta cultura intelectual. Para finalizar, algunas frases de críticos en la materia:
+
+\section*{Bibliografía sugerida:}
+
+\begin{itemize}
+	\item Chiang, A. (2005). "Métodos fundamentales de la Economía Matemática". Prentice Hall.
+	\item Kellison, S. (2008). The Theory of Interest, 2nd. ed., Irwin/McGraw-Hill, U.S.
+	\item Ross, S. A. et al, (2010). Corporate Finance. McGraw-Hill. 4th edition, U.S.
+	\item Sornette, D. y Johansen, A. (1997). Large Financial Crashes. Physica A, 245, 411-422.
+	\item Smollin, L. (2006). The Trouble With Physics: The Rise of String Theory, The Fall of a Science, and What Comes Next. Houghton Mifflin Harcourt. https://doi.org/10.1016/S0378-4371(97)00318-X
+	\item Venegas Martínez, F. (2006). Riesgos Financieros y Económicos, Productos Derivados y Decisiones Económicas Bajo Incertidumbre. International Thomson Editores, México.
+\end{itemize} 
+
+
+
+\end{document}
