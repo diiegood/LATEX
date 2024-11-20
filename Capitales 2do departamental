@@ -1,116 +1,280 @@
 \documentclass[]{article} 
-\usepackage{fullpage}
-\title{ \LARGE \vspace{-2.5cm} \textbf{ Mercado de Capitales 
-		\\ Primer Departamental \\ Laboratorio de apuntes y ejercicios \#02:
-		 \\ Teoría del interés y Matemáticas Financieras}}
- 
-\author{ Profesor: Dr.en C. Josué Alan Cantú Esquivel*\\ 
-Alumno Jorge Diego Valdez Fonseca\\ \normalsize Semestre: Agosto 2024 - Enero 2025 \vspace{0.5cm} 
-\\ \ Facultad de Economía UNAM — 26 de noviembre de 2024  }
-
-\begin{document}
-\maketitle
-
-\section*{{\LARGE Instrucciones:}
-	{\\ \setlength{\parindent}{1.0} \large Los problemas enunciados a continuación pertenecen a los primeros tópicos de Matemáticas Financie-
-	ras pertenecientes a la materia del semestre en cuestión. Esta actividad (en conjunto con las posteriores que se encarguen a los alumnos) tendrán una ponderación adicional sobre la nota del departamental. En este departamental se pondrá énfasis en la valuación y construcción de herramientas y rutinas de progra- mación ocupando lenguajes desde LATEX, Visual Basic hasta Python, con aplicaciones directas en el mercado financiero mexicano. }}
-
-
-\end{document}
-
-############################################################################################################################################################
-"Principio del documento de latex".
-\documentclass[]{article} 
-
-%opening
-\title{\Huge Mercado de Capitales \\ \Large Primer Departamental \\ \Large Laboratorio de apuntes y ejercicios}
-\author{\Large Profesor: Dr. en C. Josué Alan Cantú Esquivel* \\ \vspace{0.5cm} \normalsize Alumno Jorge Diego Valdez Fonseca}
-
-\begin{document}
-
-\maketitle
-
-\begin{abstract}
-% Aquí puedes añadir el resumen del documento
-\end{abstract}
-
-\section{}
-% El cuerpo del documento sigue aquí
-
-\end{document}
-
-######################################################################################################################################
-Tipos de letra
-\tiny – Muy pequeño
-\scriptsize – Tamaño de fuente pequeño
-\footnotesize – Tamaño de fuente de nota al pie
-\small – Fuente pequeña
-\normalsize – Tamaño normal (predeterminado)
-\large – Grande
-\Large – Muy grande
-\LARGE – Extra grande
-\huge – Más grande
-\Huge – El tamaño más grande
-
-#########################################################################################################################################
-#########################################################################################################################################
-#########################################################################################################################################
-"Mi trabajo "
-
-\documentclass[]{article} 
+%paqueterias del formato personalizado
 \usepackage{fullpage}
 \setlength{\parindent}{0.5cm}
-\setlength{\parskip}{0.10cm}
+\setlength{\parskip}{0.15cm}
+\usepackage{geometry}
+\newgeometry{bottom = 2.5cm, top = 2.5cm }
+\usepackage{tcolorbox}
+\usepackage{extarrows}
+\usepackage{amsmath}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz, pgfplots}
+\usepackage{amsfonts}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+\pgfplotsset{compat=1.17}
 
+%\linespread{1.5} %para poner la separacion entere renglones
+%\usepackage[hang,flushmargin]{footmisc}
 \title{ \LARGE \vspace{-2.5cm} \textbf{ Mercado de Capitales 
 		\\ Primer Departamental \\ Laboratorio de apuntes y ejercicios \#02:
-		 \\ Teoría del interés y Matemáticas Financieras}}
- 
-\author{ Profesor: Dr.en C. Josué Alan Cantú Esquivel*\\ 
-Alumno Jorge Diego Valdez Fonseca\\ \normalsize Semestre: Agosto 2024 - Enero 2025 \vspace{0.5cm} 
-\\ \ Facultad de Economía UNAM — \date26 de noviembre de 2024  }
+		\\ Teoría del interés y Matemáticas Financieras}}
+
+\author{\large  Profesor: Dr.en C. Josué Alan Cantú Esquivel \footnote{\footnotesize 
+		Profesor e Investigador en la SEPI ESE IPN. Queda estrictamente prohibida la distribución de este material sin antes consultarlo con el creador del contenido. En caso de que se comparta, se solicita reconocer el trabajo y la autoría de quien lo elaboró.} \\ 
+	Alumno Jorge Diego Valdez Fonseca\\ \large Semestre: Agosto 2024 - Enero 2025 \vspace{0.5cm} \\ \ Facultad de Economía UNAM —  16 de noviembre de 2024}
+\date{}
 
 \begin{document}
 \maketitle
-\begin{flushleft}
-	\textbf{{\LARGE Instrucciones:}} 
+\begin{flushleft} \vspace{-1.0cm}
+\textbf{{\LARGE Instrucciones:}} 
 \end{flushleft}
 
 \normalsize Los problemas enunciados a continuación pertenecen a los primeros tópicos de Matemáticas Financieras pertenecientes a la materia del semestre en cuestión. Esta actividad (en conjunto con las posteriores que se encarguen a los alumnos) tendrán una ponderación adicional sobre la nota del departamental. En este departamental se pondrá énfasis en la valuación y construcción de herramientas y rutinas de programación ocupando lenguajes desde LATEX, Visual Basic hasta Python, con aplicaciones directas en el mercado financiero mexicano. 
 
 
-\noindent
-\textbf{\normalsize \textbf{info}:} Se espera que al finalizar el curso, los alumnos cuenten con la capacidad de comprender y aplicar los procesos de diseño, planteamientos y empleo de diversos modelos cuantitativos ocupados en los mercados financieros y en la valuación corporativa.
+	\begin{tcolorbox} 
+	\noindent 
+	\textbf{\normalsize \textbf{Info}:}
+	\setlength{\parindent}{0.5cm}
+	Se espera que al finalizar el curso, los alumnos cuenten con la capacidad de comprender y aplicar los procesos de diseño, planteamientos y empleo de diversos modelos cuantitativos ocupados en los mercados financieros y en la valuación corporativa.
 
 
 El alumno que resuelva perfecta y detalladamente todos los ejercicios solicitados, y estén presentados a mano (a dos tintas) y en LATEX(siendo el código enviado al instructor de la materia), obtendrá dospuntos sobre la calificación del parcial. La fecha de entrega será el mismo día que el de la aplicación
 del examen del departamental correspondiente.
 
+	\end{tcolorbox}
+\vspace{-0.15cm}
 
 \section*{1. Teoría del interés} 
 \normalsize
-“El interés compuesto es la octava maravilla del mundo. Quien lo entiende, lo gana, quien no . . . lo paga”.
-Albert Einstein.
+“El interés compuesto es la octava maravilla del mundo. Quien lo entiende, lo gana, quien no...lo paga”.
+(Albert Einstein.)
+\vspace{0.25cm}
 
 ¿Cuánto vale el dinero? El valor del dinero se deriva de lo que se puede hacer con el. Con ello, cualquier agente económico racional preferiría recibir una unidad monetaria hoy a recibirla en el futuro (en un año, dos, seis, etc.) debido a distintos factores tales como liquidez, riesgo de impago o inflación. Por esta razón
 si inviertes un peso hoy esperarías que dentro de un año te sea devuelto más que tu inversión de un peso. Así, las tasas de interés definirán cuanto “más” de un peso recibirás al final del año.
 
 Actuarialmente, el interés puede ser definido como aquella compensación que un deudor paga al prestamista de capital por el uso del dinero. En teoría el interés no necesariamente está expresado en las mismas unidades que el capital, pero siempre se busca que bajo “mercados equilibrados”, el interés pagado sea una medida justa por el empleo del capital prestado. 
 
-Antes de ingresar de lleno al tema de tasas de interés, es bueno comentar las convenciones de conteo de días que son más usadas en el mercado mexicano. Denotaremos por f1 y f2 dos fechas de las cuales
-\footnote{\footnotesize *Profesor e Investigador en la SEPI ESE IPN. Queda estrictamente prohibida la distribución de este material sin antes consultarlo
-con el creador del contenido. En caso de que se comparta, se solicita reconocer el trabajo y la autoría de quien lo elaboró.}
+Antes de ingresar de lleno al tema de tasas de interés, es bueno comentar las convenciones de conteo de días que son más usadas en el mercado mexicano. Denotaremos por f1 y f2 dos fechas de las cuales queremos contabilizar su diferencia en años (pueden ser por fechas de expiración 
+
 
 \newpage %para abrir una nueva hoja
 \pagebreak %para hacer el salto de pagina
 
+
 \noindent
-queremos contabilizar su diferencia en años (pueden ser por fechas de expiración de contratos o plazos al vencimiento). A continuación se expresa la diferencia en años bajo cada convención:
+de contratos o plazos al vencimiento). A continuación se expresa la diferencia en años bajo cada convención:
+\begin{itemize}
+\item  Convención $ACT/360: Dif(f1, f2) = \frac{f2-f1}{360}$
 
-Convención ACT/360: 
-Convención ACT/364:
-Convención ACT/365:
+\item Convención $ACT/364:Dif(f1, f2) = \frac{f2-f1}{364}$
+ 
+\item  Convención $ACT/365: Dif(f1, f2) = \frac{f2-f1}{365}$
+\end{itemize}
+\vspace{-0.45cm}
 
-\end{document}
 
+\section* {Tasa de interés simple.}\vspace{-0.25cm}\normalsize 
+
+Cuando únicamente el capital (K0) gana intereses por todo el tiempo que dura la inversión, al interés vencido al final del plazo se le conoce como interés simple. Sea i una tasa simple al plazo, el valor de una inversión K0 al tiempo t estará dado por:
+
+\begin{center}
+	\large $Kf (T) = KO * (1+ i * \frac{d}{360}) para  d = 1, 2, 3, ..., 360$
+\end{center}
+
+Hay que notar que la tasa simple solo paga intereses sobre el monto inicial y no sobre el monto acumulado del interés. Es sencillo notar que para obtener un peso al tiempo T es necesario invertir. \ $\frac{1}{()1+i*\frac{d}{360})}$ Nos referiremos a este factor inverso como el factor de descuento simple.
+
+\vspace{0.35cm}
+\noindent \textbf{{\normalsize Considera los siguientes ejemplos:}}
+
+1.- Determina el interés simple sobre un nocional de \$750.00 mxp a una tasa del 4 \% nominal anual durante medio año.
+
+\begin{center}
+	\large $K_f(0,5) = 750\ast(1+4\%*\frac{180}{360})=\$765,00mxp$
+\end{center}
+
+2.- Encontrar el valor presente de \$1’500.00 mxp al 6 \% de interés simple con vencimiento en 9 meses.
+
+\begin{center}
+	\large
+	$K_0=\frac{K_f(T)}{(1+i*\frac{d}{360})}$ 
+	$\hspace{0.35cm} \rightarrow \hspace{0.35cm}
+	$$K_0 = \frac{1,500}{(1+6\%*\frac{270}{360})}=1,435.41$
+\end{center}
+
+\section* {1.2. Tasas de interés compuestas}\vspace{-0.25cm}\normalsize 
+
+Al contrario del interés simple, este tipo de tasas considera el pago de interés sobre la inversión original más el interés ya obtenido. Al depositar K0 durante un año al final del año tendremos $K0(1 + i)$. Si volvemos a tomar ese capital y lo reinvertimos obtendremos $K0(1+i)^2$ al final del segundo año. Repitiendo recursivamente este proceso llegaremos a la fórmula de interés compuesto anual.
+
+La fórmula general de interés compuesto está dada por:
+
+\begin{center}
+\large $ K_f = K_0 (1+\frac{r}{m})^{m*n}$
+\end{center}
+
+\noindent Note que $\frac{r}{m}$ representa la tasa contractual desanualizada, o la tasa por periodo de capitalización: $i$.
+
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|l|l|l|}
+		\hline
+		\multicolumn{4}{|c|}{Tabla de Capitalización} \\
+		\hline
+		Periodo de Capitalizacion & Capital Inicial (A)  & Interes Capitalizado (B) & Monto Obtenido (A+B) \\
+		\hline
+		\hline
+		0 &  &  & $K_0$ \\
+		1 & $K_0$ & $K_0 * i$ & $K_0 + K_0 * i$ \\
+		2 & $K_0 *(1 + i)$  & $K_0 * (1 + i) * i$ & $K_0 * (1 + i)^2$ \\
+		3 & $K_0 * (1 + i)^2$ & $K_0 * (1 + i)^2$ * i & $K_0 * (1 + i)^3$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+El tamaño de m representa al número de capitalizaciones. Estas puede ser tan grande como los mercados lo permitan, lo que deriva en la pregunta \textbf{¿qué sucede cuando la tasa se compone de manera instantánea?} Al hacer tender $m$ a infinito obtenemos la fórmula de interés continuo dada por:
+
+
+\begin{center}
+	\large $V_f(T)=Ne^{rT}$
+\end{center}
+
+
+\section* {2. Interés compuesto y composiciones de interés}\vspace{-0.25cm}\normalsize 
+
+Con más detalle, el interés compuesto es la operación financiera en la cual el capital aumenta al final de cada período por la adición de los intereses vencidos. El período convenido para convertir el interés en capital se llama período de capitalización, o período de conversión. Así, por ejemplo, la expresión "período de capitalización semestral", significa que el interés ganado por un cierto capital se suma al capital al término de cada semestre (interest fixing). De igual manera, al indicar que un período de capitalización es mensual, quiere decir que al final de cada mes se capitaliza/abonan intereses sobre la inversión.
+
+El interés puede capitalizarse de manera anual, semestral, mensual, semanal, diaria o inclusive de manera continua. El número de veces que el interés se capitaliza en un año se conoce como frecuencia de
+capitalización, o frecuencia de conversión. Así, la frecuencia de capitalización para una inversión con capitalización de intereses cada mes es de 12. Si la capitalización es bimestral, su frecuencia de capitalización será de 6 veces al año. Si los intereses se capitalizan de manera trimestral, su frecuencia será de 4, etc.
+
+
+\begin{center}
+	\begin{tabular}{| c | c |}
+	\hline
+	\textbf{Capitalización} & \textbf{Frecuencia} \\ \hline
+	Anual & 1 \\
+	Semestral & 2 \\
+	Cuatrimestral & 3 \\
+	Trimestral & 4 \\
+	Bimestral & 6 \\
+	Mensual & 12 \\
+	Quincenal & 24 \\
+	Semanal & 52 \\
+	Diaria (Convención) & 252/360/364 \\
+	 \hline
+\end{tabular}
+
+\end{center}
+
+\section* {2.1. Períodos de capitalización}\vspace{-0.25cm}\normalsize 
+
+En la vida diaria, es habitual encontrar las tasas contractuales expresadas en términos anuales, por lo cual los períodos de capitalización en una tasa nominal anual son un dato indispensable para los problemas de interés compuesto. Al efectuar el cálculo del interés compuesto, es necesario que la tasa de interés esté
+expresada en la misma unidad de tiempo que el período de capitalización; es decir, la tasa deberá ser convertida a tasa de interés por período de capitalización (tasa desanualizada).
+
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+Por ejemplo, si en un determinado problema la tasa de interés es del 36 \% nominal anual, capitalizable cada mes, entonces, ésta deberá ser convertida de manera mensual:
+
+\begin{center}
+	\large $36\%$ anual $\hspace{0.25cm} \rightarrow \hspace{0.25cm}$ $\frac{36\%}{12}$ ; $\hspace{0.35cm} \rightarrow \hspace{0.35cm}$ = $36\% * \dfrac{30}{360}$
+\end{center}
+
+Ahora, con la tasa desanualizada, se obtiene la valuación del monto inicial más los intereses ganados al final de cada capitalización (que será adherido al final de cada período). Como el monto original es de \$500’000.00 mxp, el interés devengado al final de la primer capitalización será:
+
+\begin{center}
+	$500,000.00* (1.25\%)$ = $6,250.00mxp$
+\end{center}
+
+O en otra expresión equivalente:
+
+\begin{center}
+	$500,000.00* (15\%\dfrac{30}{360})$ = $6,250.00mxp$
+\end{center}
+
+La operación es anterior es análoga para el vector gradiente del resto de períodos, por lo que se tendrá que:
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{||c c c c||} 
+		\hline
+		\multicolumn{4}{|c|}{Tabla de Capitalización} \\
+		\hline
+		Mes & Monto Inicial (A) & Interes Capitalizado (B) & Monto Compuesto Acumulado (A+B) \\ [0.5ex] 
+		\hline\hline
+		0 &  &  & \$500,000.00 \\ 
+		1 & \$ 500,000.00 & \$ 6,250.00 & \$ 506,250.00 \\ 
+		2 & \$ 506,250.00 & \$ 6,328.13 & \$ 512,578.13 \\
+		3 & \$ 512,578.13 & \$ 6,407.23 & \$ 518,985.35 \\
+		4 & \$ 518,985.35 & \$ 6,487.32 & \$ 525,472.67 \\
+		5 & \$ 525,472.67 & \$ 6,568.41 & \$ 532,041.08 \\ [1ex] 
+		\hline
+	\end{tabular}
+\end{table}
+
+El lector podrá apreciar fácilmente que el interés devengado de la capitalización compuesta será mayor
+que el de la capitalización simple. Ello se debe a que en el interés compuesto se obtienen intereses sobre
+los intereses capitalizados. Debido a la capitalización de los intereses, el monto compuesto crecerá de
+manera geométrica, mientras que el interés simple lo hace de forma aritmética.
+
+\begin{table}[h]
+	\centering
+	\arrayrulecolor[HTML]{0000FF}
+\begin{tabular}{llcr}
+\hline 
+\multicolumn{4}{c}{Tabla de Capitalización}  \\ \rowcolor[HTML]{E6E6E6} 
+
+Periodo de  Capitalizacion & Capital inicial & Interes Capitalizado (B) & Monto Obtenido (A+B) \\ \rowcolor[HTML]{FFFFFF}
+ 
+
+
+
+0 &  &  & $K_0$\\ \rowcolor[HTML]{E6E6E6}
+1 & $K_0$ & $K_0 * i$ &  $K_0 +K_0*i$\\ \rowcolor[HTML]{FFFFFF}
+2 & $K_0*(1+i)$ & $K_0*(1+i)*i$ &  $K_0*(1+i)^2$\\ \rowcolor[HTML]{E6E6E6}
+3 & $K_0*(1+i)^2$ & $K_0*(1+i)^2*i$ & $K_0*(1+i)^3$\\ \rowcolor[HTML]{FFFFFF}
+
+\hline
+\end{tabular}
+\end{table}
+
+Así mismo, notése que la tabla de capitalización de intereses se vuelve engorrosa para el cálculo de períodos muy alejados de la fecha de valuación. Al emplear la inducción matemática se sintetiza la ecuación como:
+
+\begin{center}
+{\large 	$K_f(T)=K_0(1+\frac{i}{m})^{{\normalsize m*n}}\equiv K_0(1+i*\frac{d}{360})^{{\normalsize \frac{360}{d}*n}}$}
+\end{center}
+
+Donde Kf (T) es el monto compuesto al final de los períodos de capitalización. K0 es el monto inicial invertido, i es la tasa de interés nominal anual (ya sea décimal o porcentual), m es el número de veces que capitaliza la tasa en un año, y n es el número de años que perdurará la inversión.
+
+\begin{tcolorbox} 
+	\noindent 
+	\textbf{\normalsize \textbf{Nota}:}
+	\setlength{\parindent}{0.5cm}
+	Donde $K_f(T)$ es el monto compuesto al final de los períodos de capitalización. $K_0$ es el monto inicial invertido, $i$ es la tasa de interés nominal anual (ya sea décimal o porcentual), $m$ es el número de veces que capitaliza la tasa en un año, y n es el número de años que perdurará la inversión.
+\end{tcolorbox}
+
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+\section* {4. Ejercicios}\vspace{-0.25cm}\normalsize 
+
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 1]
+Thomas invierte \$500’000.00 mxp a una tasa nominal anual del 15\%, capitalizable cada mes a un plazo de 5 meses. Calcule el monto final obtenido al final del período, con valuación de intereses
+compuestos.
+\end{tcolorbox}
 
