@@ -237,17 +237,17 @@ manera geométrica, mientras que el interés simple lo hace de forma aritmética
 	\arrayrulecolor[HTML]{0000FF}
 \begin{tabular}{llcr}
 \hline 
-\multicolumn{4}{c}{Tabla de Capitalización}  \\ \rowcolor[HTML]{E6E6E6} 
-
-Periodo de  Capitalizacion & Capital inicial & Interes Capitalizado (B) & Monto Obtenido (A+B) \\ \rowcolor[HTML]{FFFFFF}
- 
-
+\multicolumn{4}{c}{Tabla de Capitalización}  \\ 
+\hline
+Periodo de  Capitalizacion & Capital inicial & Interes Capitalizado (B) & Monto Obtenido (A+B) \\ \rowcolor[HTML]{E6E6E6}
 
 
-0 &  &  & $K_0$\\ \rowcolor[HTML]{E6E6E6}
-1 & $K_0$ & $K_0 * i$ &  $K_0 +K_0*i$\\ \rowcolor[HTML]{FFFFFF}
-2 & $K_0*(1+i)$ & $K_0*(1+i)*i$ &  $K_0*(1+i)^2$\\ \rowcolor[HTML]{E6E6E6}
-3 & $K_0*(1+i)^2$ & $K_0*(1+i)^2*i$ & $K_0*(1+i)^3$\\ \rowcolor[HTML]{FFFFFF}
+
+
+0 &  &  & $K_0$\\ \rowcolor[HTML]{FFFFFF}
+1 & $K_0$ & $K_0 * i$ &  $K_0 +K_0*i$\\ \rowcolor[HTML]{E6E6E6}
+2 & $K_0*(1+i)$ & $K_0*(1+i)*i$ &  $K_0*(1+i)^2$\\ \rowcolor[HTML]{FFFFFF}
+3 & $K_0*(1+i)^2$ & $K_0*(1+i)^2*i$ & $K_0*(1+i)^3$\\ \rowcolor[HTML]{E6E6E6}
 
 \hline
 \end{tabular}
@@ -277,4 +277,132 @@ Donde Kf (T) es el monto compuesto al final de los períodos de capitalización.
 Thomas invierte \$500’000.00 mxp a una tasa nominal anual del 15\%, capitalizable cada mes a un plazo de 5 meses. Calcule el monto final obtenido al final del período, con valuación de intereses
 compuestos.
 \end{tcolorbox}
+\vspace{-0.50cm}
+\section*{Respuesta 1}
+\noindent $P= \$500,000$ \hspace{1.95cm} $P=500e^3(1+\dfrac{15}{12}){\tiny {\small ^{12*\frac{5}{12}}}}=532,041.0768$\\
+$i = 15\% \hspace{0.15cm} \rightarrow \hspace{0.15cm} \frac{15}{12} \hspace{1.85cm} $ \\
+$m = 12$\\
+$n = 12 *\frac{5}{12}$
+$n=5$
 
+\noindent Por lo que podemos ver que al cabo de invertir \$500,000 pesos mexicanos a una tasa anualizada del 15\% al tener solo 5 capitalizaciones, le corresponderia una ganancia de capital de \$32,041.07868 pesos mexicanos.
+
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 2]
+	El licenciado Hernandéz y su esposa empiezan a ahorrar para que su hijo pueda estudiar Ingeniería Quimica en el ITESM. Ambos planean depositar \$3’500.00 mxp en una cuenta de ahorro al final de cada mes durante los próximos 10 años. Si la tasa de interés pactada con Santander es del 8.4 \% nominal anual, usted asesoreles:\\
+	
+	(a) El monto de la cuenta al cabo de 10 años\\
+	
+	(b) El monto de los intereses ganados con respecto al capital invertido\\
+	
+	Su esposa; la licenciada Baltazar, proyecta unicamente hacer los depósitos de \$3’500.00 mxp mensuales durante los primeros 5 años (en lo que se estabiliza la situación financiera de ambos), durante el tiempo restante se depositaran \$5’000.00 mxp, con el fin de compensar los efectos de la inflación y asegurar un patrimonio más grato para su hijo.\\
+	
+	(c) Obtenga los efectos en el monto final y en los intereses ganados resultados de la desición de la licenciada Baltazar.
+	
+\end{tcolorbox}
+\vspace{-0.50cm}
+\section*{Respuesta 2}
+\vspace{-0.10cm}
+\noindent$ R = \$3,500mxp $ \hspace{0.25cm} | \hspace{0.25cm}  n = 10 años \hspace{0.25cm} | \hspace{0.25cm} $m = 12$ \hspace{0.25cm}  |  \hspace{0.25cm}  $n = 12 *\frac{5}{12}$ \hspace{0.25cm}  | \hspace{0.25cm} $n=5$ 
+
+\begin{center}
+	{\normalsize $
+a)\hspace{0.15cm} \$3500*\left[\frac{(1+\frac{0.084}{12})^{12*120}-1}{\frac{0.084}{12}}\right]
+\hspace{0.25cm}\longrightarrow\hspace{0.25cm}\$654,799.19 
+$}
+\end{center}
+
+
+\noindent Dado que: la inversion de $\$3500$, en 120 periodos (invertidos mensualmente {1.85cm} durante 10 años), se obtiene un monto sin interes de $\$420,000mxp$ porque;  $\$3,500 * (120) = \$ 420,000.00 $
+
+\noindent b) \hspace{0.15cm} Por lo que Al Obtener el interes obtenido; $\$654,799.19 - \$420,000.00 = \$ 234,799.19$ de interes durante un 120 periodos o 10 años menusalmente
+
+\noindent c) \hspace{0.15cm}
+
+
+
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 3]
+¿A qué tasa de interés compuesto de deben depositar \$17,500.00 mxp para disponer de \$20,000.00mxp en un plazo de 15 meses? Considere que los intereses se capitalizan cada quincena.
+\end{tcolorbox}
+
+\section*{Respuesta 3}
+\vspace{-0.10cm}
+\noindent$ K_f = \$20,000mxp $ \hspace{0.15cm} | \hspace{0.25cm}  $K_0 = \$17,500.00mxp \hspace{0.25cm} | \hspace{0.25cm} $m = 24$ \hspace{0.25cm}  |  \hspace{0.25cm}  $n = 1.25 \\
+
+\noindent Por lo que; 
+
+\begin{center}
+$	i = \left[\left(\frac{K_f}{K_0}\right)^{\frac{1}{m*n}}-1\right]*m$
+\end{center}
+
+
+
+\section* {5. Ecuaciones de Valor}\vspace{-0.25cm}\normalsize 
+\begin{flushright}
+	La pereza no trae riqueza\\
+Proverbios 6:9-11
+\end{flushright}
+
+Una ecuación de valor es una equivalencia en Matemáticas Financieras de dominio discreto y continuo, por lo cual se ha convertido en una de las herramientas mas empleadas, debido a que permiten resolver diversos tipos de problemas financieros en períodos de tiempo distintos, basados en el principio del precio del dinero como piedra angular para el analisis de ecuaciones.\\
+
+Una ecuación de valor se basa en el hecho que el dinero tiene un valor que depende del tiempo, es por esto que un peso en el presente no valdrá lo mismo que un peso en el futuro. Para resolver ejercicios de ecuaciones de valor normalmente se deben seguir ciertos pasos:
+
+\begin{itemize}
+	\item Paso 1: Colocar todas las cantidades en una misma escala de tiempo y valor de tasa de interes.
+	
+	\item Paso 2: Llevar todas las deudas a su fecha de vencimiento original con su tasa de interés especifica, ello como facilitador del análisis.
+	
+	\item Paso 3: Llevar todos los flujos de efectivo a una fecha focal,la cual sera el punto de comparación de la ecuación de valor. 
+	
+	\item Paso 4: Igualar el valor de los flujos de efectivo. 
+\end{itemize}
+
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 4]
+Encuentre el Valor Presente de \$71’644.00 mxp, que vencen dentro de un año y 10 meses, si la tasa de interés es del 1.5 \% mensual capitalizable cada cuatrimestre.
+\begin{itemize}
+	\item a) Realice y especifique la nueva composición de la operación para el cálculo de los intereses.
+	
+	\item b) El monto compuesto traído a valor presente.
+	
+	\item c) La explicación de la composición de la tasa cuatrimestral.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{-0.50cm}
+\section*{Respuesta 4}
+\vspace{-0.10cm}
+\noindent$ R = \$3,500mxp $ \hspace{0.25cm} | \hspace{0.25cm}  n = 10 años \hspace{0.25cm} | \hspace{0.25cm} $m = 12$ \hspace{0.25cm}  |  \hspace{0.25cm}  $n = 12 *\frac{5}{12}$ \hspace{0.25cm}  | \hspace{0.25cm} $n=5$ 
+
+\section* {6. La inflación y la ecuación de Fischer}\vspace{-0.25cm}\normalsize 
+
+La inflación es el aumento generalizado y sostenido de los precios de los bienes y servicios durante un período determinado. En México, la inflación se calcula con base en el Índice Nacional de Precios al Consumidor (INPC), si el índice aumenta, hay inflación y si baja, hay deflación. Estas variaciones de
+precios repercuten directamente en el poder adquisitivo y en el bienestar de los consumidores, razón por la cual el INPC es un indicador trascendente y de interés general para la sociedad en su conjunto.
+
+Ahora, cuando algunos precios varían de manera inesperada tienden a alterar la trayectoria de crecimiento de los demás, esto distorsiona la medición general de la inflación al no reflejar su comportamiento normal en el mediano plazo. Para medir un nivel de inflación más estable, se calcula la inflación subyacente que elimina los precios más volátiles de los bienes y servicios que constituyen la canasta del INPC, dejando sólo los productos y servicios más estables. Estos bienes y servicios más volátiles son los agropecuarios y
+energéticos.
+\vspace{0.25cm}
+	\begin{tcolorbox} 
+	\noindent 
+	\textbf{\normalsize \textbf{Info Tipos de Inflacion}:}
+	\setlength{\parindent}{0.5cm}
+	
+\begin{itemize}
+	\item \textbf{Inflación subyacente:} incremento de los precios de un subconjunto de bienes y servicios en el INPC. Ofrece mayor certidumbre, al ser una mejor aproximación de cómo se comportarán los precios en el mediano plazo para facilitar la planeación y toma de decisiones de consumo, ahorro e inversión.
+	
+	\item \textbf{Inflación no subyacente:} incluye los componentes más volátiles del INPC, que tienden a experimentar fluctuaciones significativas en sus precios debido a factores externos como cambios en
+	los precios internacionales de los alimentos y productos energéticos más susceptibles a variaciones temporales y factores externos como eventos climáticos, fluctuaciones en los precios del petróleo, así como choques de oferta que pueden tener un impacto transitorio en los precios.
+\end{itemize}
+\end{tcolorbox} 
+\vspace{0.25cm}
+En economía, se le llama “ilusión monetaria” a la posibilidad de que las personas crean que son más ricas porque tienen más dinero, sin percibir que ese dinero puede valer cada día menos. \textbf{Técnicamente, que las personas responden a los términos nominales, y no reales, en los precios.} Para la mayoría de los expertos, la ilusión monetaria no existe, y las personas sí reaccionan al “precio real” de los bienes y servicios, es decir, pueden descontar el efecto de la inflación. Tal vez esto sea cierto para los traders y comerciantes, acostumbrados a mantener la relación de los precios en la mente, pero dudo que funcione para la mayoría de las personas.
+
+Por su parte, el efecto de Fisher establece que la tasa de interés nominal se ajusta para reflejar cambios en la tasa de interés real y en la inflación esperada. Específicamente, la tasa de interés de un bono o un préstamo es aproximadamente equivalente a la suma de la tasa de interés real y la tasa de inflación que se espera durante el período del bono o préstamo. En finanzas, la ecuación sirve para explicar la tasa nominal de interés en función de la tasa real de interés y la inflación. De los tres conceptos que la ecuación
+relaciona, asumimos que la inflación y la tasa real de interés son determinados fuera de la ecuación (son exógenas o predeterminadas).
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 5]
+	La inflación mensual en un país de la Unión Europea se ha mantenido aproximadamente constante,en un promedio de 0.37 \%. ¿Cuál era el precio de un bien hace 14 meses, si actualmente cuesta 194.60 euros?
+\end{tcolorbox}
+
+\section*{Respuesta 5}
+\vspace{-0.10cm}
+\noindent$ R = \$3,500mxp $ \hspace{0.25cm} | \hspace{0.25cm}  n = 10 años \hspace{0.25cm} | \hspace{0.25cm} $m = 12$ \hspace{0.25cm}  |  \hspace{0.25cm}  $n = 12 *\frac{5}{12}$ \hspace{0.25cm}  | \hspace{0.25cm} $n=5$ 
