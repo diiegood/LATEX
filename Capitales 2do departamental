@@ -31,7 +31,7 @@
 
 \author{\large  Profesor: Dr.en C. Josué Alan Cantú Esquivel \footnote{\footnotesize 
 		Profesor e Investigador en la SEPI ESE IPN. Queda estrictamente prohibida la distribución de este material sin antes consultarlo con el creador del contenido. En caso de que se comparta, se solicita reconocer el trabajo y la autoría de quien lo elaboró.} \\ 
-	Alumno Jorge Diego Valdez Fonseca\\ \large Semestre: Agosto 2024 - Enero 2025 \vspace{0.5cm} \\ \ Facultad de Economía UNAM —  16 de noviembre de 2024}
+	Alumno: Jorge Diego Valdez Fonseca\\ \large Semestre: Agosto 2024 - Enero 2025 \vspace{0.5cm} \\ \ Facultad de Economía UNAM —  16 de noviembre de 2024}
 \date{}
 
 \begin{document}
@@ -91,10 +91,10 @@ de contratos o plazos al vencimiento). A continuación se expresa la diferencia 
 Cuando únicamente el capital (K0) gana intereses por todo el tiempo que dura la inversión, al interés vencido al final del plazo se le conoce como interés simple. Sea i una tasa simple al plazo, el valor de una inversión K0 al tiempo t estará dado por:
 
 \begin{center}
-	\large $Kf (T) = KO * (1+ i * \frac{d}{360}) para  d = 1, 2, 3, ..., 360$
+	\large $Kf (T) = K_O * (1+ i * \frac{d}{360})$ para  d $= 1, 2, 3, ..., 360$
 \end{center}
 
-Hay que notar que la tasa simple solo paga intereses sobre el monto inicial y no sobre el monto acumulado del interés. Es sencillo notar que para obtener un peso al tiempo T es necesario invertir. \ $\frac{1}{()1+i*\frac{d}{360})}$ Nos referiremos a este factor inverso como el factor de descuento simple.
+Hay que notar que la tasa simple solo paga intereses sobre el monto inicial y no sobre el monto acumulado del interés. Es sencillo notar que para obtener un peso al tiempo T es necesario invertir. \ $\frac{1}{(1+i*\frac{d}{360})}$ Nos referiremos a este factor inverso como el factor de descuento simple.
 
 \vspace{0.35cm}
 \noindent \textbf{{\normalsize Considera los siguientes ejemplos:}}
@@ -259,13 +259,14 @@ Así mismo, notése que la tabla de capitalización de intereses se vuelve engor
 {\large 	$K_f(T)=K_0(1+\frac{i}{m})^{{\normalsize m*n}}\equiv K_0(1+i*\frac{d}{360})^{{\normalsize \frac{360}{d}*n}}$}
 \end{center}
 
-Donde Kf (T) es el monto compuesto al final de los períodos de capitalización. K0 es el monto inicial invertido, i es la tasa de interés nominal anual (ya sea décimal o porcentual), m es el número de veces que capitaliza la tasa en un año, y n es el número de años que perdurará la inversión.
+Donde $K_f(T)$ es el monto compuesto al final de los períodos de capitalización. $K_0$ es el monto inicial invertido, $i$ es la tasa de interés nominal anual (ya sea décimal o porcentual), $m$ es el número de veces que capitaliza la tasa en un año, y n es el número de años que perdurará la inversión.
 
 \begin{tcolorbox} 
 	\noindent 
 	\textbf{\normalsize \textbf{Nota}:}
 	\setlength{\parindent}{0.5cm}
-	Donde $K_f(T)$ es el monto compuesto al final de los períodos de capitalización. $K_0$ es el monto inicial invertido, $i$ es la tasa de interés nominal anual (ya sea décimal o porcentual), $m$ es el número de veces que capitaliza la tasa en un año, y n es el número de años que perdurará la inversión.
+ Con la información recopilada, y con el apoyo de los apuntes brindados por el instructor de la materia responda los planteamientos matematicos que se le presenten a continuación.
+
 \end{tcolorbox}
 
 \newpage %para abrir una nueva hoja
@@ -331,9 +332,11 @@ $}
 \noindent Por lo que; 
 
 \begin{center}
-$	i = \left[\left(\frac{K_f}{K_0}\right)^{\frac{1}{m*n}}-1\right]*m$
+$	i = \left[\left(\frac{K_f}{K_0}\right)^{\frac{1}{m*n}}-1\right]*m\hspace{0.25cm} \longrightarrow\hspace{0.25cm} 	i = \left[\left(\frac{20,000}{17,500}\right)^{\frac{1}{30}}-1\right]*24 = .10706321
+  $
 \end{center}
 
+\noindent Por lo tanto podemos ver que la tasa queda como $.10706321 * 100 \hspace{0.25cm} \longrightarrow\hspace{0.25cm} 10.706321\% $ , por lo que podemos ver que invirtio a una tasa de $10.7063\%$ anual en una inversion de  $\$17,500.00 $ en 15 meses.
 
 
 \section* {5. Ecuaciones de Valor}\vspace{-0.25cm}\normalsize 
@@ -370,7 +373,24 @@ Encuentre el Valor Presente de \$71’644.00 mxp, que vencen dentro de un año y
 \vspace{-0.50cm}
 \section*{Respuesta 4}
 \vspace{-0.10cm}
-\noindent$ R = \$3,500mxp $ \hspace{0.25cm} | \hspace{0.25cm}  n = 10 años \hspace{0.25cm} | \hspace{0.25cm} $m = 12$ \hspace{0.25cm}  |  \hspace{0.25cm}  $n = 12 *\frac{5}{12}$ \hspace{0.25cm}  | \hspace{0.25cm} $n=5$ 
+\noindent$ K_f =\$71,644.00 $ \hspace{0.25cm} | \hspace{0.25cm}  $n = 1.83$ (dado en años ) \hspace{0.25cm} | \hspace{0.25cm} $m = 3$ (cuatrimestral) \hspace{0.25cm}  |  \hspace{0.25cm}  $K_0=? $ \hspace{0.25cm}  | \hspace{0.25cm} $n=22$ (1 año, 10 meses) \hspace{0.25cm}  | \hspace{0.25cm} $i=1.5\%*(12)=18\%$\\
+
+\noindent a) Para calcular la nueva composcion debemos tener que convertir al mismo periodo o frecuencia los datos de tasa y periodo, por lo que en este caso al convertirlo a cuatrimestral los dos valores, por lo que quedaria asi.\\
+
+\noindent Dada la conversion de tiempo (a cuatrimestral) $3*\left(\frac{22}{12}\right)= 5.5 $
+
+\noindent Dada la conversion del periodo de interes anualizado a periodicidad cuatrimestral queda; $\frac{18\%}{3}=6\%$
+
+\noindent Por lo que al traer el monto a Valor Actual queda con la siguiente ecuacion;\\
+
+$\dfrac{K_f}{\left(1+\frac{i}{m}\right)^{m*n}}$
+$\hspace{0.25cm} \longrightarrow\hspace{0.25cm}$
+$\dfrac{\$71,644.00}{\left(1+\frac{18\%}{3}\right)^{3*\frac{22}{12}}}$
+$\hspace{0.25cm} \longrightarrow\hspace{0.25cm}$ $\dfrac{\$71,644.00}{\left(1+6\%\right)^{5.5}} = \$51,999.31$\\
+
+
+\noindent Por loq ue al ver podemos ver que el capital semilla o capital de origen es de \$51,999.31 dado su conversion de monto a capital presente y su conversion cuatrimestral de periodo de capitalizacion (m) y tiempo (n).
+
 
 \section* {6. La inflación y la ecuación de Fischer}\vspace{-0.25cm}\normalsize 
 
@@ -405,4 +425,145 @@ relaciona, asumimos que la inflación y la tasa real de interés son determinado
 
 \section*{Respuesta 5}
 \vspace{-0.10cm}
-\noindent$ R = \$3,500mxp $ \hspace{0.25cm} | \hspace{0.25cm}  n = 10 años \hspace{0.25cm} | \hspace{0.25cm} $m = 12$ \hspace{0.25cm}  |  \hspace{0.25cm}  $n = 12 *\frac{5}{12}$ \hspace{0.25cm}  | \hspace{0.25cm} $n=5$ 
+\noindent$ \$194.60 $ \hspace{0.25cm} | \hspace{0.25cm}  n = 14 meses \hspace{0.25cm} | \hspace{0.25cm} $i = 0.37\%$ \hspace{0.25cm}  |  \hspace{0.25cm}  $P_f=P_0\left[i+n\right]^n$ \hspace{0.25cm}  
+
+\noindent$K_f=K_0\left(1+\frac{i}{m}\right)^{m*n} \hspace{0.25cm} \longrightarrow \hspace{0.25cm}  K_0=\dfrac{K_f}{\left(1+\frac{i}{m}\right)^{m*n}} \hspace{0.25cm} \longrightarrow \hspace{0.25cm} K_0=\dfrac{\$194.60}{\left(1+0.0037\right)^{14}} = \$184.7940 $ \\ 
+
+\noindent Por lo que podemos ver que el precio original hace 14 meses antes de los efectos inflacionarios, trayendo el monto o capital final a valor presente es de \$184,7940 euros
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 6]
+	Demuestre (matemáticamente) que de la fórmula de las tasas de interés equivalentes, se llega a la tasa efectiva. Expliqué su formulación e interpretación para llegar hasta ella
+\end{tcolorbox}
+
+\section*{Respuesta 6}
+%\hspace{0.25cm} \longrightarrow \hspace{0.25cm}
+\noindent$K_f=K_0\left[1+\dfrac{i}{m}\right]^{m*n} = \hspace{0.15cm} K_0\left[1+\dfrac{i}{q}\right]^{q*n} \hspace{0.25cm}  \longrightarrow \hspace{0.25cm} \left[1+\frac{i}{m}\right]^{m*n} = \hspace{0.15cm} \left[1+\frac{i}{q}\right]^{q}  $ \\
+
+\noindent Por lo tanto podemos ver que se resume a; 
+\begin{center}
+	$i=\left[\left[1+\frac{i}{m}\right]^{\frac{m}{q}}-1\right] * q $
+\end{center}
+
+\noindent Aqui se puede observar que primero hacemos una igualdad dos ecuaciones  de valor futuro de interes compuesto, la primera en capitalizacion "m" y la segunda con una capitalizacion "q" por lo que buscaremos despejar ambas ecuaciones se convierten en una sola, por lo que; queda la ecuacion como , interes es igual a 1 que represetna el (1005\% del porcentaje del capital ), esto sumando el interes dividio en la capitalizacion "m",para poder llevar la tasa al periodo de capitalizacion "$\frac{m}{q}$", donde se le vuelve a restar el 1 quedando el incremento en el tiempo de interes sobre la capitalizacion, que multiplica el periodo de capitalizacion q.
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 7]
+¿En cuál banco invertiría usted su dinero?
+\begin{itemize}
+	
+	\item a) En JP Morgan Chase \& Co, que le ofrece una tasa nominal anual del 26 \% capitalizable diariamente.
+	
+	\item b) En Goldman Sachs Group, que le ofrece el 27.5 \% nominal anual capitalizable cada 28 días.
+\end{itemize}
+
+	Realice la decisión en base al criterio del interés anual efectivo. Muestre los porcentajes de rendimientos anuales y sus diferencias.
+	
+\end{tcolorbox}
+
+\section*{Respuesta 7}
+\vspace{-0.10cm}
+\noindent \textbf{Opciones de inversion:} \\
+
+\noindent J.P. Morgan Chase \& Co.\hspace{0.25cm} $i = 26\%$ \hspace{0.25cm} $Frecuencia=364$ dias
+
+\noindent Goldman Sachs Group \hspace{0.25cm} $i = 27.5\%$ \hspace{0.25cm} $Frecuencia=28$ dias\\
+
+\noindent Tomando en cuenta un periodo anual de $365$ o $360$ dias, Dada la siguiente ecuacion para calcular la tasa anual efectiva:
+
+\begin{center}
+{\Large \noindent $\left((1+\frac{i}{m})^{\frac{m}{q}}-1\right)*q$} %$\hspace{0.15cm}  \longrightarrow \hspace{0.15cm}$
+\end{center}
+
+\noindent J.P. Morgan Chase; $\left((1+\frac{26\%}{364})^{\frac{364}{1}}-1\right)*1 = 0.296810$
+$\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ = $29.6810\%$\\
+\noindent $\left((1+\frac{26\%}{360})^{\frac{360}{1}}-1\right)*1 = 0.296808$
+$\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ = $29.6808\%$\\
+
+\noindent Goldman Sachs Group; Para la conversion de la capitalizacion mensual a anual; $\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ $\frac{364}{28}=13$ y  $\frac{360}{28}=12.85714$
+
+\noindent $\left((1+\frac{27.50\%}{13})^{\frac{13}{1}}-1\right)*1 = 0.31276$
+$\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ = $31.2760\%$
+
+\noindent $\left((1+\frac{27.50\%}{12.85714})^{\frac{12.85714}{1}}-1\right)*1 = 0.312719$
+$\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ = $31.2719\%$
+
+\noindent Por lo que podemos ver que la mejor tasa es al de Goldman Sachs Group, ya que es la tasa efectiva anual es mejor teniendo en cuenta el periodo anual de 364 dias, dando un resultado de: $31.2760-29.6810=1.5950$ , por lo que se ve que hay un incremento de 159 puntos base de ventaja de la tasa de Goldman Sachs sobre la de J.P. Morgan Chase, por lo que la opcion de Goldman Sachs Group es la mejor opcion donde invertiria mi dinero.
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 8]
+Se invierten \$85’000.00 mxp a una tasa nominal del 18 \% capitalizable cada mes durante nueve meses. Calcule:
+\begin{itemize}
+	
+	\item a) El monto al final de los nueve meses
+	
+	\item b) La tasa efectiva anual, y
+	
+	\item c) La tasa efectiva en el período de inversión, es decir, en nueve meses.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{Respuesta 8}
+\vspace{-0.10cm}
+\noindent  $i = 18\%$ \hspace{0.25cm} $m=12$ \hspace{0.25cm} $n=\frac{9}{12}=0.75$  \hspace{0.25cm} $K_0=\$85,000.00 mxp$\\
+
+\noindent Dada la ecuacion;
+
+\noindent a) $K_f=\left(1+\frac{i}{m}\right)^{m*n}\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}K_f=\left(1+\frac{18\%}{12}\right)^{12*0.75}=\$97,188.15mxp$ despues de invertir a 9 meses en una tasa anual de 18\%\\
+
+\noindent b) $i$ efectiva anual $= \left(\left(1+\frac{i}{m}\right)^{m*n}\right)-1\hspace{0.05cm}  \longrightarrow \hspace{0.05cm} \left(\left(1+\frac{18\%}{12}\right)^{12*1}\right)-1 = 19.561817\% $ anual efectiva\\
+
+\noindent c) $i$ efectiva 9 meses $= \left(\left(1+\frac{i}{m}\right)^{m*n}\right)-1\hspace{0.05cm}  \longrightarrow \hspace{0.05cm} \left(\left(1+\frac{18\%}{12}\right)^{12*0.75}\right)-1 = 14.338998\% $ efectiva 9 meses.
+
+\noindent Por lo que podemos decir que la difrencia entre los periodos de 1 año a 9 meses sobre la tasa efectiva es de 156.2 puntos base de diferencia
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 9]
+	Calcule la tasa de interés nominal capitalizable cada quincena que produce una tasa efectiva del 16.1292 \% anual.
+\end{tcolorbox}
+
+\section*{Respuesta 9}
+\vspace{-0.10cm}
+\noindent  i objetivo = $16.1292\%$ \hspace{0.25cm} $Frecuencia=15$ dias (24 periodos anuales) \hspace{0.25cm} n= 1 año
+
+
+\noindent En este caso esta pregunta se puede resolver con el metodo de buscar objetivo en Excel, por lo que primero se da una tasa aleatoria (que sera el que modificara la funcion de buscar objetivo) , posteriormente se hace la ecuacion de calculo de tasa efectiva ; 
+
+
+
+\begin{center}
+
+$\left(\left(1+\frac{i}{m}\right)^{m*n}\right)-1\hspace{0.05cm}$ 
+	
+\end{center}
+
+\noindent Ya teniendo la ecuacion dada en el resultado de la tasa efectiva toca con la funcion de objetivo modificar el valor porcentual de la tasa de interes y marcar que queremos el valor de 16.1292\% sobre el valor donde introducimos la ecuacion en excel, al terminar de calcular excel nos va arrogar una tasa muy parecida, (para mayor precision el valor de la tasa aleatoria debe ser extremadamente alto ), con lo que el numero de iteraciones sera mayor y el error que tendremos, siendo la diferencia entre la tasa arrojada por el resultado y la tasa objetivo sera cada vez mas cercano a 0.
+
+\noindent Por lo que los valores arrojados corresponderan a los siguientes; 
+\begin{center}
+	
+	$\left(\left(1+\frac{15.05\%}{24}\right)^{24*1}\right)-1=16.1292\%\hspace{0.05cm}$ con un margen de error de $0.007$  
+	
+\end{center}
+
+	\noindent El error tambien se puede disminuir con la funcion de buscar objetivo y con la finalidad de que tienda a 0.000 con mayores decimales, para una tasa mas precisa.
+	
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 10]
+El 7 de abril de 2020, Rodolfo vendió su automóvil en \$104’000.00 mxp y, el mismo día, invirtió el dinero en una cuenta que paga una tasa de interés del 7 \% nominal anual, capitalizable cada mes.
+
+\begin{itemize}
+\item 	a) ¿Cuál fue el monto final de su inversión un año después, en pesos constantes del 7 de abril del 2021, si la inflación mensual promedio en el año fue del 0.3340 \%?
+	
+\item b) ¿Cuál es la tasa real anual capitalizable cada mes, y la tasa real anual efectiva?
+\end{itemize}
+\end{tcolorbox}
+\section*{Respuesta 10}
+\vspace{-0.10cm}
+
+
+
+\end{document}
+
+
