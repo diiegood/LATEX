@@ -1,0 +1,364 @@
+\documentclass[]{article} 
+%paqueterias del formato personalizado
+\usepackage{fullpage}
+\setlength{\parindent}{0.5cm}
+\setlength{\parskip}{0.15cm}
+\usepackage{geometry}
+\newgeometry{bottom = 2.5cm, top = 2.5cm }
+\usepackage{tcolorbox}
+\usepackage{extarrows}
+\usepackage{amsmath}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz, pgfplots}
+\usepackage{amsfonts}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+\pgfplotsset{compat=1.17}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{siunitx}
+
+
+%\linespread{1.5} %para poner la separacion entere renglones
+%\usepackage[hang,flushmargin]{footmisc}
+\title{ \LARGE \vspace{-2.5cm} \textbf{ Mercado de Capitales 
+		\\ Primer Departamental \\ Laboratorio de apuntes y ejercicios \#03:
+		\\ Valuación de proyectos de inversión y simulación
+		Monte-Carlo en Visual Basic}}
+
+\author{\large  Profesor: Dr.en C. Josué Alan Cantú Esquivel \footnote{\footnotesize 
+		Profesor e Investigador en la SEPI ESE IPN. Queda estrictamente prohibida la distribución de este material sin antes consultarlo con el creador del contenido. En caso de que se comparta, se solicita reconocer el trabajo y la autoría de quien lo elaboró.} \\ 
+	Alumno: Jorge Diego Valdez Fonseca\\ \large Semestre: Agosto 2024 - Enero 2025 \vspace{0.5cm} \\ \ Facultad de Economía UNAM —  20 de noviembre de 2024}
+\date{}
+
+\begin{document}
+	\maketitle
+	\begin{flushleft} \vspace{-1.0cm}
+		\textbf{{\LARGE Instrucciones:}} 
+	\end{flushleft}
+	
+	\normalsize Los temas enunciados en este laboratorio pertenecen a los tópicos de evaluación de proyectos y administración financiera pertenecientes a la materia del semestre en cuestión. De este trabajo se desarrollarán actividades de manera que, en conjunto con las posteriores que se encarguen a los alumnos tendrán una ponderación (potencial) sobre la nota del departamental. Este programa académico busca familiarizar a
+	los estudiantes con la teoría y metodologías fundamentales empleadas en el mercado mexicano para la
+	toma de decisiones de inversión y trading.
+	
+	
+	\begin{tcolorbox} 
+		\noindent 
+		\textbf{\normalsize \textbf{Info}:}
+		\setlength{\parindent}{0.5cm}
+		Info: El alumno que resuelva perfecta y detalladamente los casos de estudio solicitados, y estén presentados en Excel, Visual Basic y en LATEX(siendo los códigos enviados al instructor de la materia), obtendrá un puntaje de apoyo sobre la calificación del parcial.		
+	\end{tcolorbox}
+	\vspace{-0.15cm}
+	
+	\section*{1. Principios para la valuación de proyectos financieros e instrumentos inversión.}
+	
+	Para abarcar el tema de la valuación de instrumentos financieros, primero se debe definir que es un modelo de valuación. Este es un método cuantitativo para establecer el valor de un activo financiero o cualquier tipo de proyecto/actividad que puede consolidarse como una transacción comercial.
+	
+	Los modelos de valuación buscan ofrecer un criterio de decisión de compra o venta en la comparación del valor entre inversiones respecto a su precio en el mercado. Este proceso de valuación se ve afectado por la información arrojada en el entorno de los mercados. No debe de confundirse el concepto de valor con
+	el del precio, pues este ultimo es el que establecen el comprador y el vendedor al momento de pactar el contrato, obedeciendo en muchas veces los principios de oferta y demanda (bid-ask).1 El primer concepto por su parte, hace énfasis respecto a la calidad y fungibilidad del subyacente sobre el cual se cotiza un precio.
+	
+	
+	Así mismo, debe mencionarse que en los mercados financieros se aplica la ley del precio único: si dos activos son equivalentes, deben de tener el mismo precio, por lo cual, un inversionista buscará maximizar el valor de sus inversiones en función del riesgo, utilidad y expectativas. Por su parte, los consejos de
+	inversión tomarán decisiones operativas mediante la elección de los proyectos que maximicen la riqueza de los accionistas y permitan la mantenibilidad de la empresa del mediano al largo plazo.
+	
+	\section*{2. Valor Presente Neto (VPN)}
+	
+	El Valor Presente Neto (VPN) o Valor Actual Neto (VAN) es el método más conocido para evaluar proyectos de inversión a largo plazo, ya que permite determinar si una inversión cumple con el objetivo básico del administrador financiero: la maximización del valor del cápital de la firma mediante la generación de valor por la adecuada gerencia financiera. Ello se logra con la identificación de buenas inversiones. Esta técnica, es un procedimiento que permite realizar estimaciones de potenciales flujos de efectivo para conocer el valor presente de una inversión.
+	
+	Con esto, el Valor Presente Neto (VPN) es un criterio de inversión que consiste en actualizar los cobros y pagos de un proyecto o inversión para estimar cuánto se puede ganar o perder con este. El VPN es, por tanto, una medida del beneficio que rinde un proyecto de inversión a través de toda su vida útil. Supone el equivalente en unidades monetarias actuales de todos los ingresos y egresos, presentes y futuros que constituyen un proyecto. Por ello, es una herramienta central para la valuación de flujos de caja que se emplea en el análisis fundamental para la valoración de empresas cotizadas en bolsa.
+	
+	\section*{2.1. ¿Cómo se calcula el Valor Presente Neto?}
+	
+	La metodología consiste en descontar al momento actual de valuación todos los flujos de caja futuros o en determinar la equivalencia en el tiempo 0 de los flujos de efectivo futuros que genera un proyecto y comparar esta equivalencia con el desembolso inicial. Dicha tasa de actualización o de descuento es el resultado del producto entre el costo medio ponderado de capital (Weighted Average Cost of Capital: WACC) y la tasa de inflación de los períodos. Cuando dicha equivalencia es mayor que el desembolso/inversión inicial, entonces es recomendable que el proyecto sea realizado.
+	
+	Para calcular el Valor Presente Neto (VPN) se traen todos los flujos de caja al momento presente valuandolos con un factor de descuento determinado que usualmente es la composición de la tasa de financiamiento requerida por la emisión de deuda y capital que fueron solicitados para financiar el proyecto, es decir, el costo de capital promedio ponderado. Con ella, cada entrada y salida de efectivo se descuenta a valor presente (VP), y posteriormente se suman en la fecha focal de valuación descontando los costos de
+	inversión inicial, tal y como establece la siguiente fórmula:
+	
+\begin{center}
+	
+	$VAN=$
+	
+\end{center}
+
+La fórmula del Valor Presente Neto o VAN depende, por tanto, de las siguientes variables:
+\begin{itemize}
+	
+	\item Inversión inicial (Io): monto o valor de desembolso que la empresa hará en el momento inicial de efectuar la inversión.
+	
+	\item Flujos netos de efectivo (Ft): representan la diferencia entre los ingresos y gastos que podrán obtenerse por la ejecución de un proyecto de inversión durante su vida útil.
+	
+	\item Tasa de descuento (k): también conocida como costo o tasa de oportunidad. Es la tasa de retorno requerida sobre una inversión. Refleja la oportunidad perdida de gastar o invertir en el presente.
+	
+	\item  Número de periodos del proyecto (n).
+\end{itemize}
+
+El Valor Presente Neto sirve para generar dos tipos de decisiones: analizar si las inversiones son favorables e identificar qué inversión es mejor que otra en términos absolutos. Los criterios de decisión se basan en lo siguiente:
+\newpage
+
+\begin{itemize}
+\item\textbf{VAN >0 }: la tasa de descuento elegida generará beneficios.
+	
+\item \textbf{VAN = 0} : el proyecto de inversión no generará beneficios ni pérdidas, por lo que su realización resultará indiferente.
+	 
+\item \textbf{VAN <0} : el proyecto de inversión generará pérdidas, por lo que deberá ser rechazado.
+\end{itemize}
+
+En resumen, un proyecto de inversión de capital debería aceptarse si tiene un valor presente neto positivo cuando los flujos de efectivo esperados se descuentan al costo de oportunidad del financiamiento.
+Si el proyecto no tiene riesgo, se tomará como referencia el tipo de la renta fija, de tal manera que con el VAN se estimará si la inversión es mejor que invertir en algo seguro, sin riesgo específico. En otros casos se utilizará el coste de oportunidad.
+
+Cuando el VAN toma un valor igual a 0, K pasa a llamarse TIR (tasa interna de retorno). La TIR es la rentabilidad que nos está proporcionando el proyecto. Como se puede observar, el Valor Presente Neto (VPN) es un criterio sencillo y efectivo de elección de inversiones. Mediante una sencilla fórmula se puede conocer si interesa o no efectuar una inversión.
+
+El valor presente neto es muy importante para la valoración de inversiones en activos fijos, a pesar de sus limitaciones en considerar circunstancias imprevistas o excepcionales del mercado. Si su valor es mayor a cero, el proyecto es rentable, considerándose el valor mínimo de rendimiento para la inversión.
+Una empresa suele comparar diferentes alternativas para comprobar si un proyecto le conviene o no. \textbf{Normalmente la alternativa con el VAN más alto suele ser la mejor para la entidad, pero no siempre
+tiene que ser así.} Hay ocasiones en las que una empresa elige un proyecto con un VAN más bajo debido a diversas razones como podrían ser los horizontes de inversión y recuperación en el tiempo por motivos
+estratégicos u otros motivos que en ese momento interesen a dicha entidad.
+
+\section*{3. Simulación Monte-Carlo}
+
+En finanzas, estudiamos el trade-off entre riesgo y rendimiento. La definición común de riesgo es incertidumbre. Por ejemplo, al evaluar un proyecto potencialmente rentable, tenemos que estimar muchos
+factores durante la vida del proyecto, como las ventas anuales, el precio del producto final, los precios de las materias primas, el aumento salarial de los empleados, la tasa de inflación, el costo de endeudamiento, costo de nuevas acciones y fases del ciclo económico, entre otras. Para esos casos, la simulación de Monte Carlo podría usarse para modelar múltiples eventos y resultados futuros, así como sus diversas combinaciones.
+
+La simulación de Montecarlo es un método estadístico utilizado para resolver problemas matemáticos complejos a través de la generación de variables aleatorias.\footnote{\footnotesize 
+	Se denomina variable aleatoria (o estocástica) a la función que adjudica eventos posibles a números reales (cifras), cuyos valores
+	se miden en experimentos de tipo aleatorio. Estos valores posibles representan los resultados de experimentos que todavía no se
+	llevaron a cabo o cantidades inciertas..} La clave de este método está en entender eltérmino ‘simulación’. Realizar una simulación consiste en repetir o duplicar las características y comportamientos de un sistema real. Así pues, el objetivo principal de la simulación de Montecarlo es intentar
+imitar el comportamiento de variables reales para, en la medida de lo posible, analizar o predecir cómo van a evolucionar.\footnote{\footnotesize 
+	El método Monte Carlo reduce la incertidumbre: calcula con aproximaciones hacía el infinito las modelaciones aproximándonos
+	a un valor cierto por los entornos de probabilidad de las variables; alcanza un valor estable cuando la media aritmética y la varianza de las observaciones tiende a estabilizarse dentro de un entorno de probabilidades. (rango de los datos).}
+	A través de la simulación se pueden resolver desde problemas muy sencillos, hasta problemas muy complejos. En economía la simulación de Montecarlo se utiliza tanto en valuación de empresas como en gestión de proyectos de inversión.\footnote{\footnotesize 
+	Pruebas de estrés financiero}. Siendo en el mundo de la inversión donde más se utiliza. Algunos ejemplos de simulación de Montecarlo en inversión son los siguientes:
+
+\begin{itemize}
+	\item Crear, valorar y analizar carteras de inversión
+	
+	\item Valorar productos financieros complejos como las opciones financieras
+	
+	\item Creación de modelos de gestión de riesgo (credit metrics, credit risk plus, etc.)
+\end{itemize}
+
+Dado que la rentabilidad de una inversión es impredecible se utiliza este tipo de método para evaluar distintos tipos de escenarios.
+
+Los reguladores siempre han luchado con el concepto de un enfoque único para todos los aspectos de la administración de riesgos y un solo dato que represente todos los riesgos que afectan a una
+institución o a un proyecto agregado. Asimismo, la alta dirección obtiene varios datos presentados para cada riesgo, pero es incapaz de responder esta sencilla pregunta: ¿cuál es el riesgo total de un proyecto?
+
+Como parte del proceso de evaluación y control del riesgo, las instituciones reúnen mucha información sobre los riesgos a varios niveles de la institución. Sin embargo, en general es difícil reunir la información detallada de los riesgos a nivel de área o departamento para crear una visión integral de la exposición al riesgo.
+
+La correcta administración de riesgos en las instituciones financieras y la supervisión prudencial de sensibilidad al riesgo se basan generalmente en evaluaciones integrales de los riesgos dentro de las instituciones. La acumulación de riesgos\footnote{\footnotesize 
+	Proceso de combinar medidas menos exhaustivas de riesgo dentro de una institución para obtener medidas más integrales).} es fundamental para muchos aspectos de la gestión de riesgos, así como para la sensibilidad al riesgo.
+
+Teniendo en cuenta que la “acumulación de riesgos” en este sentido no se refiere a los diversos desafíos de los sistemas de administración e información relacionados con \textbf{garantizar que la información sobre riesgos se presente de manera eficaz y adecuada en toda la institución o a las respectivas áreas de administración responsables}; aunque generalmente es un paso necesario para la administración de riesgos.
+
+\section*{3.1. Generación de números aleatorios}
+
+Un punto clave en la utilización de la simulación de Montecarlo es la generación de números aleatorios.¿Cómo generamos números aleatorios? Con programas informáticos. Excel ofrece una amplía gama de fórmulas para esta labor. Algunas de las más empleadas en valuación de proyectos son:
+
+\begin{itemize}
+	\item \textbf{ALEATORIO.ENTRE:} Devuelve un número aleatorio que se encontrará entre el límite inferior y el
+	límite superior especificados. La función ALEATORIO.ENTRE siempre devolverá un número entero.
+	
+	Ejemplo:\textbf{=ALEATORIO.ENTRE(30,35)}
+	
+	\item \textbf{DISTR.NORM.INV (NORMINV):} Ofrece el valor de la función de distribución normal inversa para un
+	valor, media y desviación estándar específicos.
+	 
+	Ejemplo \textbf{=DISTR.NORM.INV(ALEATORIO(),600,22)}
+	 
+\end{itemize}
+
+
+Así pues, se utilizan programas informáticos que generan estos números. No se consideran números puramente aleatorios, ya que los crea el programa con una fórmula. No obstante, se parecen mucho a las
+variables aleatorias de la realidad. Se les denomina números $pseudo-aleatorios$.
+
+\section*{4. Conclusiones preliminares}
+
+Las inversiones comprometen el escaso y valioso capital de las empresas, por lo cual las estrategias de inversión recaen en la categoría general del presupuesto de capital y la asignación estratégica de activos.
+
+El asunto del presupuesto de capital quizá sea el aspecto más importante de las Finanzas Corporativas: la manera en que una empresa decida financiar sus operaciones (estructura de capital) y la manera en
+que administrara sus actividades de operación al corto plazo son sin duda, aspectos de primordial interés, pero debe tenerse en consideración que serán los activos fijos aquellos que decidan el giro de la empresa.
+
+Cualquier empresa posee una enorme cantidad de posibles inversiones; cada una constituye una de las opciones de inversión para la firma. Por lo tanto, la esencia de una administración financiera exitosa es
+saber identificar cuales son las mejores opciones dentro de la cartera de posibilidades de inversión. Frente a este escenario, el administrador financiero deberá dominar las técnicas empleadas para analizar y evaluar los proyectos empresariales en coordinación con estrategias que maximicen el valor de la empresa.
+
+La finalidad de la administración financiera es crear valor para los accionistas. Por lo cual es deber de la administración financiera examinar las inversiones potenciales y su probable efecto sobre las variaciones en el valor de las acciones de la firma. Ello no es una cuestión menor, pues deben de plantearse todos los escenarios probables y emitir un criterio respecto a una o más posibilidades de inversión.
+
+La idea básica es que, si una inversión genera valor para sus propietarios, entonces valdrá la pena efectuarla; se creará valor mediante la identificación de una inversión cuyo valor en el mercado sea mayor que su costo de adquisición.
+
+Es evidente que el verdadero desafío es identificar las oportunidades de inversión de un proyecto que saldrá mas de lo que cuesta hoy en el mercado.
+
+La diferencia entre el valor del mercado de una inversión y su costo se denomina Valor Presente Neto (VPN). Es un indicador que mide cuanto valor se crea o se agrega hoy al efectuar una inversión.
+
+El objetivo de la administración financiera es crear valor para los accionistas, por lo cual, el proceso del presupuesto de capital se puede considerar como la búsqueda de inversiones con valor presente netos positivos. Ello mediante las aproximaciones del costo de comparar un activo y ponerlo en el mercado. Es este punto se tendrá un costo total estimado y un valor de mercado estimados.
+
+\section*{5. Bibliografía recomendada}
+
+\begin{itemize}
+	\item Kellison, Stephen. (2000). The Theory of Interest. Georgia State University. Second Edition. McGraw Hill. USA.
+	
+	\item Ross, Westerfield y Jaffe. (2009). Finanzas Corporativas. Octava Edición. McGraw Hill. México.
+	 
+	\item Fabozzi, Frank J. (2012) .The Handbook of Fixed Income Securities. Seventh Edition. McGraw Hill. USA. 
+	 
+	\item Wilmott, Paul. (2000). Paul Wilmott on quantitative finance. Edit: John Wiley Sons Ltd. England.
+\end{itemize}
+
+\newpage
+
+
+\begin{tcolorbox} 
+	\noindent 
+	\textbf{\normalsize \textbf{Pregunta 1}:}
+	\setlength{\parindent}{0.5cm}
+\textbf{Mercedes Benz} está evaluando la apertura de una nueva planta ensambladora de vehículos premium en Guanajuato. Usted ha sido promovido recientemente del cargo de consultor de operaciones finan-
+cieras y tiene fuertes aspiraciones a llegar al puesto de coordinador líder de carteras y proyectos de inversión, por lo cual, el comité de directivos le ha encargado la evaluación del proyecto en coordina-
+ción con el contador general. Al realizar los cálculos de los esquemas y corridas contables, el contador del proyecto le hace saber los siguientes aspectos:
+
+Se requerirá de una inversión inicial de \$6’000’000’000.00 de dólares para cubrir todos los costos de la construcción y derechos de giro de la ensambladora con un costo de capital promedio ponderado
+del 25 \% anual para cada período. Con la finalidad de ahorrar en deducciones fiscales, este flujo de efectivo debe ser depositados en una sola exhibición en el arranque del proyecto (año 0).
+
+La planta podrá ensamblar los autos una vez que el edificio y la maquinaria este completa, esto no tomará más de un año. Transcurrido el año, el contador le explica la constitución de los siguientes flujos de efectivo: El costo anual por producción de unidades en el primer año (proyectado) será de \$900’000’000.00 dólares, y teniendo como referencia la información de otras plantas, se estima un
+crecimiento de estos costos que oscila del 6 al 8 \% anual.	
+
+Así mismo, el contador estima que la nómina de producción total del primer año sea de \$90’000’000 dólares, con tasas de crecimiento del 2 al 6 \% y que la nómina administrativa sea de \$20’000’000.00 dólares con las mismas tasas de crecimiento en los 5 años siguientes.
+
+Mercedes Benz les ha indicado que, en caso de que el proyecto resulte atractivo, tiene la posibilidad de traspasar flujos de efectivo de algunas de sus plantas para apoyarles en los gastos, financiamiento
+y puesta en marcha de la planta. Ese ingreso asciende a un total de \$9’000’000.00 de dólares para el primer año y con tasas de crecimiento del 2 al 6 \% según se lo permita las posibilidades financieras de la firma.
+
+La experiencia del contador con otras plantas respecto a las necesidades financieras aconseja
+
+incluir en el proyecto la sección de “otros gastos” en caso de que se llegue a necesitar de más liquidez por algún accidente, siniestro o error financiero. El recomienda cuando menos un monto de \$3’000’000.00 de dólares para el primer año con tasas de crecimiento de alrededor del 4 \% para los cinco años de vida, con las mismas tasas de crecimiento del 2 al 6 \% 
+
+Por su parte, el precio de ventas por unidad será de \$600’000.00 dólares para el primer año, con estimados de crecimiento anual del 8 al 12 \% para los cinco años siguientes, ello en función de
+las condiciones del país. Riesgos estima que el precio oscile respecto a su media al rededor del 4 \%. También se estima que la producción de unidades será de 5000 con una desviación estándar del 6 \%,
+pero con tasas del crecimiento en la producción del 10 al 20 \% en función de la demanda que la ensambladora enfrente.
+
+Los últimos aspectos que le plantea el contador es que nadie se salva del fisco, por lo cual se logró pactar el mantenimiento de una Reserva Legal del 5 \% y un pago por participación en la utilidad para los trabajadores del 10 \% estático durante la vida del proyecto.
+
+Los directivos tomaron la decisión (únicamente para este proyecto) de no dejar valor de salvamento a la inversión total en activos fijos, pidiéndole que la considere como pérdida total tras los
+cinco años de operación, pues se tiene planeado donar las instalaciones al estado con el fin de llegar a un acuerdo con hacienda y se condenen cinco años de impuestos para el resto de las plantas, en-
+sambladoras y puntos de venta de Mercedes Benz después de la vida de este proyecto. Sin embargo, el contador le explica que, por deducciones fiscales es posible depreciar el total de activos fijos en un plazo de cuatro años.
+
+Evalúe el modelo de valor presente neto determinista y estocástico con cien, mil y diez mil simu-
+laciones Monte-Carlo. Evalúe los resultados y emita su criterio de decisión y determine si es viable o
+
+no la inversión. También explique: ¿Cuál es la perdida o beneficio máximo en un modelo estándar respecto a las oscilaciones de las variables? amparado en la ley de los grandes números y el teorema
+del límite central.
+
+\end{tcolorbox}
+
+\section*{Respuesta 1: 10,000 simulaciones }
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+			\begin{tabular}{||c c ||} 
+
+			\hline
+			Valor & Resultado \\ [0.5ex] 
+			\hline
+			Maximo &  4,150,781.79 \\ 
+			Minimo & -1,473,248.41 \\
+			Promedio & 914,716.45 \\
+			Rango & 5,624,030.20 \\
+			Grupos & 10,000  (100) \\
+			Amplitud & 562.40 (56,240) \\ [1ex] 
+			\hline
+		\end{tabular}
+		
+	\end{minipage} \hspace{1cm} % Espacio entre las tablas
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+           
+			\hline
+			Parametro & q=1\% (99\% ) & q=5\% (95\% )  \\  
+			\hline
+			VaR &  \ -545,549.06  &  -170,151.61  \\[0.5ex]
+			C-VaR &  \ -714,885.35 &  -397,979.93 \\ [1ex] 
+			\hline
+		\end{tabular}
+		
+	\end{minipage}
+\end{figure}
+
+\section*{Respuesta 2 : 100 simulaciones }
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{||c c ||} 
+			
+			\hline
+			Valor & Resultado \\ [0.5ex] 
+			\hline
+			Maximo &  2,839,084.74 \\ 
+			Minimo & -474,878.94 \\
+			Promedio & 894,749.21 \\
+			Rango & 3,313,963.68 \\
+			Grupos & 100 (100) \\
+			Amplitud & 33,139.64 \\ [1ex] 
+			\hline
+		\end{tabular}
+		
+	\end{minipage} \hspace{1cm} % Espacio entre las tablas
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+			
+			\hline
+			Parametro & q=1\% (99\% ) & q=5\% (95\% ) \\  
+			\hline
+			VaR &  -419,209.44\   & -159,222.91  \\[0.5ex]
+			C-VaR & -479,878.94 \  &  -344,544.94  \\ [1ex] 
+			\hline
+		\end{tabular}
+		
+	\end{minipage}
+\end{figure}
+
+\section*{Respuesta 3: 1,000 simulaciones}
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{||c c ||} 
+			
+			\hline
+			Valor & Resultado \\ [0.5ex] 
+			\hline
+			Maximo &  3,714,945.74 \\ 
+			Minimo &  -963,305.87\\
+			Promedio & 918,653.40 \\
+			Rango & 4,678,251.61 \\
+			Grupos & 1,000 \\
+			Amplitud & 4,678.25 (46,782.52) \\ [1ex] 
+			\hline
+		\end{tabular}
+		
+	\end{minipage} \hspace{1cm} % Espacio entre las tablas
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+			
+			\hline
+			Parametro & q=1\% (99\% ) & q=5\% (95\% ) \\  
+			\hline
+			VaR & -556,437.68 \   & -116,956.74  \\[0.5ex]
+			C-VaR & 723,320.31 \  &  387,443.24 \\ [1ex] 
+			\hline
+		\end{tabular}
+		
+	\end{minipage}
+\end{figure}
+
+\end{document}
