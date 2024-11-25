@@ -1,0 +1,1267 @@
+\documentclass[]{article} 
+%paqueterias del formato personalizado
+\usepackage{fullpage}
+\setlength{\parindent}{0.5cm}
+\setlength{\parskip}{0.15cm}
+\usepackage{geometry}
+\newgeometry{bottom = 2.5cm, top = 2.5cm }
+\usepackage{tcolorbox}
+\usepackage{extarrows}
+\usepackage{amsmath}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz, pgfplots}
+\usepackage{amsfonts}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+\pgfplotsset{compat=1.17}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{siunitx}
+
+
+%\linespread{1.5} %para poner la separacion entere renglones
+%\usepackage[hang,flushmargin]{footmisc}
+\title{ \LARGE \vspace{-2.5cm} \textbf{ Mercado de Capitales 
+		\\ Primer Departamental \\ Laboratorio de apuntes y ejercicios \#02:
+		\\ Teoría del interés y Matemáticas Financieras}}
+
+\author{\large  Profesor: Dr.en C. Josué Alan Cantú Esquivel \footnote{\footnotesize 
+		Profesor e Investigador en la SEPI ESE IPN. Queda estrictamente prohibida la distribución de este material sin antes consultarlo con el creador del contenido. En caso de que se comparta, se solicita reconocer el trabajo y la autoría de quien lo elaboró.} \\ 
+	Alumno: Jorge Diego Valdez Fonseca\\ \large Semestre: Agosto 2024 - Enero 2025 \vspace{0.5cm} \\ \ Facultad de Economía UNAM —  16 de noviembre de 2024}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{flushleft} \vspace{-1.0cm}
+\textbf{{\LARGE Instrucciones:}} 
+\end{flushleft}
+
+\normalsize Los problemas enunciados a continuación pertenecen a los primeros tópicos de Matemáticas Financieras pertenecientes a la materia del semestre en cuestión. Esta actividad (en conjunto con las posteriores que se encarguen a los alumnos) tendrán una ponderación adicional sobre la nota del departamental. En este departamental se pondrá énfasis en la valuación y construcción de herramientas y rutinas de programación ocupando lenguajes desde LATEX, Visual Basic hasta Python, con aplicaciones directas en el mercado financiero mexicano. 
+
+
+	\begin{tcolorbox} 
+	\noindent 
+	\textbf{\normalsize \textbf{Info}:}
+	\setlength{\parindent}{0.5cm}
+	Se espera que al finalizar el curso, los alumnos cuenten con la capacidad de comprender y aplicar los procesos de diseño, planteamientos y empleo de diversos modelos cuantitativos ocupados en los mercados financieros y en la valuación corporativa.
+
+
+El alumno que resuelva perfecta y detalladamente todos los ejercicios solicitados, y estén presentados a mano (a dos tintas) y en LATEX(siendo el código enviado al instructor de la materia), obtendrá dospuntos sobre la calificación del parcial. La fecha de entrega será el mismo día que el de la aplicación
+del examen del departamental correspondiente.
+
+	\end{tcolorbox}
+\vspace{-0.15cm}
+
+\section*{1. Teoría del interés} 
+\normalsize
+“El interés compuesto es la octava maravilla del mundo. Quien lo entiende, lo gana, quien no...lo paga”.
+(Albert Einstein.)
+\vspace{0.25cm}
+
+¿Cuánto vale el dinero? El valor del dinero se deriva de lo que se puede hacer con el. Con ello, cualquier agente económico racional preferiría recibir una unidad monetaria hoy a recibirla en el futuro (en un año, dos, seis, etc.) debido a distintos factores tales como liquidez, riesgo de impago o inflación. Por esta razón
+si inviertes un peso hoy esperarías que dentro de un año te sea devuelto más que tu inversión de un peso. Así, las tasas de interés definirán cuanto “más” de un peso recibirás al final del año.
+
+Actuarialmente, el interés puede ser definido como aquella compensación que un deudor paga al prestamista de capital por el uso del dinero. En teoría el interés no necesariamente está expresado en las mismas unidades que el capital, pero siempre se busca que bajo “mercados equilibrados”, el interés pagado sea una medida justa por el empleo del capital prestado. 
+
+Antes de ingresar de lleno al tema de tasas de interés, es bueno comentar las convenciones de conteo de días que son más usadas en el mercado mexicano. Denotaremos por f1 y f2 dos fechas de las cuales queremos contabilizar su diferencia en años (pueden ser por fechas de expiración 
+
+
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+
+\noindent
+de contratos o plazos al vencimiento). A continuación se expresa la diferencia en años bajo cada convención:
+\begin{itemize}
+\item  Convención $ACT/360: Dif(f1, f2) = \frac{f2-f1}{360}$
+
+\item Convención $ACT/364:Dif(f1, f2) = \frac{f2-f1}{364}$
+ 
+\item  Convención $ACT/365: Dif(f1, f2) = \frac{f2-f1}{365}$
+\end{itemize}
+\vspace{-0.45cm}
+
+
+\section* {Tasa de interés simple.}\vspace{-0.25cm}\normalsize 
+
+Cuando únicamente el capital (K0) gana intereses por todo el tiempo que dura la inversión, al interés vencido al final del plazo se le conoce como interés simple. Sea i una tasa simple al plazo, el valor de una inversión K0 al tiempo t estará dado por:
+
+\begin{center}
+	\large $Kf (T) = K_O * (1+ i * \frac{d}{360})$ para  d $= 1, 2, 3, ..., 360$
+\end{center}
+
+Hay que notar que la tasa simple solo paga intereses sobre el monto inicial y no sobre el monto acumulado del interés. Es sencillo notar que para obtener un peso al tiempo T es necesario invertir. \ $\frac{1}{(1+i*\frac{d}{360})}$ Nos referiremos a este factor inverso como el factor de descuento simple.
+
+\vspace{0.35cm}
+\noindent \textbf{{\normalsize Considera los siguientes ejemplos:}}
+
+1.- Determina el interés simple sobre un nocional de \$750.00 mxp a una tasa del 4 \% nominal anual durante medio año.
+
+\begin{center}
+	\large $K_f(0,5) = 750\ast(1+4\%*\frac{180}{360})=\$765,00mxp$
+\end{center}
+
+2.- Encontrar el valor presente de \$1’500.00 mxp al 6 \% de interés simple con vencimiento en 9 meses.
+
+\begin{center}
+	\large
+	$K_0=\frac{K_f(T)}{(1+i*\frac{d}{360})}$ 
+	$\hspace{0.35cm} \rightarrow \hspace{0.35cm}
+	$$K_0 = \frac{1,500}{(1+6\%*\frac{270}{360})}=1,435.41$
+\end{center}
+
+\section* {1.2. Tasas de interés compuestas}\vspace{-0.25cm}\normalsize 
+
+Al contrario del interés simple, este tipo de tasas considera el pago de interés sobre la inversión original más el interés ya obtenido. Al depositar K0 durante un año al final del año tendremos $K0(1 + i)$. Si volvemos a tomar ese capital y lo reinvertimos obtendremos $K0(1+i)^2$ al final del segundo año. Repitiendo recursivamente este proceso llegaremos a la fórmula de interés compuesto anual.
+
+La fórmula general de interés compuesto está dada por:
+
+\begin{center}
+\large $ K_f = K_0 (1+\frac{r}{m})^{m*n}$
+\end{center}
+
+\noindent Note que $\frac{r}{m}$ representa la tasa contractual desanualizada, o la tasa por periodo de capitalización: $i$.
+
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|l|l|l|}
+		\hline
+		\multicolumn{4}{|c|}{Tabla de Capitalización} \\
+		\hline
+		Periodo de Capitalizacion & Capital Inicial (A)  & Interes Capitalizado (B) & Monto Obtenido (A+B) \\
+		\hline
+		\hline
+		0 &  &  & $K_0$ \\
+		1 & $K_0$ & $K_0 * i$ & $K_0 + K_0 * i$ \\
+		2 & $K_0 *(1 + i)$  & $K_0 * (1 + i) * i$ & $K_0 * (1 + i)^2$ \\
+		3 & $K_0 * (1 + i)^2$ & $K_0 * (1 + i)^2$ * i & $K_0 * (1 + i)^3$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+El tamaño de m representa al número de capitalizaciones. Estas puede ser tan grande como los mercados lo permitan, lo que deriva en la pregunta \textbf{¿qué sucede cuando la tasa se compone de manera instantánea?} Al hacer tender $m$ a infinito obtenemos la fórmula de interés continuo dada por:
+
+
+\begin{center}
+	\large $V_f(T)=Ne^{rT}$
+\end{center}
+
+
+\section* {2. Interés compuesto y composiciones de interés}\vspace{-0.25cm}\normalsize 
+
+Con más detalle, el interés compuesto es la operación financiera en la cual el capital aumenta al final de cada período por la adición de los intereses vencidos. El período convenido para convertir el interés en capital se llama período de capitalización, o período de conversión. Así, por ejemplo, la expresión "período de capitalización semestral", significa que el interés ganado por un cierto capital se suma al capital al término de cada semestre (interest fixing). De igual manera, al indicar que un período de capitalización es mensual, quiere decir que al final de cada mes se capitaliza/abonan intereses sobre la inversión.
+
+El interés puede capitalizarse de manera anual, semestral, mensual, semanal, diaria o inclusive de manera continua. El número de veces que el interés se capitaliza en un año se conoce como frecuencia de
+capitalización, o frecuencia de conversión. Así, la frecuencia de capitalización para una inversión con capitalización de intereses cada mes es de 12. Si la capitalización es bimestral, su frecuencia de capitalización será de 6 veces al año. Si los intereses se capitalizan de manera trimestral, su frecuencia será de 4, etc.
+
+
+\begin{center}
+	\begin{tabular}{| c | c |}
+	\hline
+	\textbf{Capitalización} & \textbf{Frecuencia} \\ \hline
+	Anual & 1 \\
+	Semestral & 2 \\
+	Cuatrimestral & 3 \\
+	Trimestral & 4 \\
+	Bimestral & 6 \\
+	Mensual & 12 \\
+	Quincenal & 24 \\
+	Semanal & 52 \\
+	Diaria (Convención) & 252/360/364 \\
+	 \hline
+\end{tabular}
+
+\end{center}
+
+\section* {2.1. Períodos de capitalización}\vspace{-0.25cm}\normalsize 
+
+En la vida diaria, es habitual encontrar las tasas contractuales expresadas en términos anuales, por lo cual los períodos de capitalización en una tasa nominal anual son un dato indispensable para los problemas de interés compuesto. Al efectuar el cálculo del interés compuesto, es necesario que la tasa de interés esté
+expresada en la misma unidad de tiempo que el período de capitalización; es decir, la tasa deberá ser convertida a tasa de interés por período de capitalización (tasa desanualizada).
+
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+Por ejemplo, si en un determinado problema la tasa de interés es del 36 \% nominal anual, capitalizable cada mes, entonces, ésta deberá ser convertida de manera mensual:
+
+\begin{center}
+	\large $36\%$ anual $\hspace{0.25cm} \rightarrow \hspace{0.25cm}$ $\frac{36\%}{12}$ ; $\hspace{0.35cm} \rightarrow \hspace{0.35cm}$ = $36\% * \dfrac{30}{360}$
+\end{center}
+
+Ahora, con la tasa desanualizada, se obtiene la valuación del monto inicial más los intereses ganados al final de cada capitalización (que será adherido al final de cada período). Como el monto original es de \$500’000.00 mxp, el interés devengado al final de la primer capitalización será:
+
+\begin{center}
+	$500,000.00* (1.25\%)$ = $6,250.00mxp$
+\end{center}
+
+O en otra expresión equivalente:
+
+\begin{center}
+	$500,000.00* (15\%\dfrac{30}{360})$ = $6,250.00mxp$
+\end{center}
+
+La operación es anterior es análoga para el vector gradiente del resto de períodos, por lo que se tendrá que:
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{||c c c c||} 
+		\hline
+		\multicolumn{4}{|c|}{Tabla de Capitalización} \\
+		\hline
+		Mes & Monto Inicial (A) & Interes Capitalizado (B) & Monto Compuesto Acumulado (A+B) \\ [0.5ex] 
+		\hline\hline
+		0 &  &  & \$500,000.00 \\ 
+		1 & \$ 500,000.00 & \$ 6,250.00 & \$ 506,250.00 \\ 
+		2 & \$ 506,250.00 & \$ 6,328.13 & \$ 512,578.13 \\
+		3 & \$ 512,578.13 & \$ 6,407.23 & \$ 518,985.35 \\
+		4 & \$ 518,985.35 & \$ 6,487.32 & \$ 525,472.67 \\
+		5 & \$ 525,472.67 & \$ 6,568.41 & \$ 532,041.08 \\ [1ex] 
+		\hline
+	\end{tabular}
+\end{table}
+
+El lector podrá apreciar fácilmente que el interés devengado de la capitalización compuesta será mayor
+que el de la capitalización simple. Ello se debe a que en el interés compuesto se obtienen intereses sobre
+los intereses capitalizados. Debido a la capitalización de los intereses, el monto compuesto crecerá de
+manera geométrica, mientras que el interés simple lo hace de forma aritmética.
+
+\begin{table}[h]
+	\centering
+	\arrayrulecolor[HTML]{0000FF}
+\begin{tabular}{llcr}
+\hline 
+\multicolumn{4}{c}{Tabla de Capitalización}  \\ 
+\hline
+Periodo de  Capitalizacion & Capital inicial & Interes Capitalizado (B) & Monto Obtenido (A+B) \\ \rowcolor[HTML]{E6E6E6}
+
+
+
+
+0 &  &  & $K_0$\\ \rowcolor[HTML]{FFFFFF}
+1 & $K_0$ & $K_0 * i$ &  $K_0 +K_0*i$\\ \rowcolor[HTML]{E6E6E6}
+2 & $K_0*(1+i)$ & $K_0*(1+i)*i$ &  $K_0*(1+i)^2$\\ \rowcolor[HTML]{FFFFFF}
+3 & $K_0*(1+i)^2$ & $K_0*(1+i)^2*i$ & $K_0*(1+i)^3$\\ \rowcolor[HTML]{E6E6E6}
+
+\hline
+\end{tabular}
+\end{table}
+
+Así mismo, notése que la tabla de capitalización de intereses se vuelve engorrosa para el cálculo de períodos muy alejados de la fecha de valuación. Al emplear la inducción matemática se sintetiza la ecuación como:
+
+\begin{center}
+{\large 	$K_f(T)=K_0(1+\frac{i}{m})^{{\normalsize m*n}}\equiv K_0(1+i*\frac{d}{360})^{{\normalsize \frac{360}{d}*n}}$}
+\end{center}
+
+Donde $K_f(T)$ es el monto compuesto al final de los períodos de capitalización. $K_0$ es el monto inicial invertido, $i$ es la tasa de interés nominal anual (ya sea décimal o porcentual), $m$ es el número de veces que capitaliza la tasa en un año, y n es el número de años que perdurará la inversión.
+
+\begin{tcolorbox} 
+	\noindent 
+	\textbf{\normalsize \textbf{Nota}:}
+	\setlength{\parindent}{0.5cm}
+ Con la información recopilada, y con el apoyo de los apuntes brindados por el instructor de la materia responda los planteamientos matematicos que se le presenten a continuación.
+
+\end{tcolorbox}
+
+\newpage %para abrir una nueva hoja
+\pagebreak %para hacer el salto de pagina
+
+\section* {4. Ejercicios}\vspace{-0.25cm}\normalsize 
+
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 1]
+Thomas invierte \$500’000.00 mxp a una tasa nominal anual del 15\%, capitalizable cada mes a un plazo de 5 meses. Calcule el monto final obtenido al final del período, con valuación de intereses
+compuestos.
+\end{tcolorbox}
+\vspace{-0.50cm}
+\section*{Respuesta 1}
+\noindent $P= \$500,000$ \hspace{1.95cm} $P=500e^3(1+\dfrac{15}{12}){\tiny {\small ^{12*\frac{5}{12}}}}=532,041.0768$\\
+$i = 15\% \hspace{0.15cm} \rightarrow \hspace{0.15cm} \frac{15}{12} \hspace{1.85cm} $ \\
+$m = 12$\\
+$n = 12 *\frac{5}{12}$
+$n=5$
+
+\noindent Por lo que podemos ver que al cabo de invertir \$500,000 pesos mexicanos a una tasa anualizada del 15\% al tener solo 5 capitalizaciones, le corresponderia una ganancia de capital de \$32,041.07868 pesos mexicanos.
+
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 2]
+	El licenciado Hernandéz y su esposa empiezan a ahorrar para que su hijo pueda estudiar Ingeniería Quimica en el ITESM. Ambos planean depositar \$3’500.00 mxp en una cuenta de ahorro al final de cada mes durante los próximos 10 años. Si la tasa de interés pactada con Santander es del 8.4 \% nominal anual, usted asesoreles:\\
+	
+	(a) El monto de la cuenta al cabo de 10 años\\
+	
+	(b) El monto de los intereses ganados con respecto al capital invertido\\
+	
+	Su esposa; la licenciada Baltazar, proyecta unicamente hacer los depósitos de \$3’500.00 mxp mensuales durante los primeros 5 años (en lo que se estabiliza la situación financiera de ambos), durante el tiempo restante se depositaran \$5’000.00 mxp, con el fin de compensar los efectos de la inflación y asegurar un patrimonio más grato para su hijo.\\
+	
+	(c) Obtenga los efectos en el monto final y en los intereses ganados resultados de la desición de la licenciada Baltazar.
+	
+\end{tcolorbox}
+\vspace{-0.50cm}
+\section*{Respuesta 2}
+\vspace{-0.10cm}
+\noindent$ R = \$3,500mxp $ \hspace{0.25cm} | \hspace{0.25cm}  n = 10 años \hspace{0.25cm} | \hspace{0.25cm} $m = 12$ \hspace{0.25cm}  |  \hspace{0.25cm}  $n = 12 *\frac{5}{12}$ \hspace{0.25cm}  | \hspace{0.25cm} $n=5$ 
+
+\begin{center}
+	{\normalsize $
+a)\hspace{0.15cm} \$3500*\left[\frac{(1+\frac{0.084}{12})^{12*120}-1}{\frac{0.084}{12}}\right]
+\hspace{0.25cm}\longrightarrow\hspace{0.25cm}\$654,799.19 
+$}
+\end{center}
+
+
+\noindent Dado que: la inversion de $\$3500$, en 120 periodos (invertidos mensualmente {1.85cm} durante 10 años), se obtiene un monto sin interes de $\$420,000mxp$ porque;  $\$3,500 * (120) = \$ 420,000.00 $
+
+\noindent b) \hspace{0.15cm} Por lo que Al Obtener el interes obtenido; $\$654,799.19 - \$420,000.00 = \$ 234,799.19$ de interes durante un 120 periodos o 10 años menusalmente.\\
+
+\newpage
+\vspace{-0.50cm}
+
+\newpage
+\vspace{-0.50cm}
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+			\hline
+			\multicolumn{3}{|c|}{Tabla 1} \\ 
+			\hline
+			
+			t & Ahorro & Monto Final  \\ 
+			\hline
+			0 & &  \\ 
+			1 & \$3,500 &  \$8,027.40 \\
+			2 & \$3,500 &  \$7,971.60 \\
+			3 & \$3,500 &  \$7,916.19 \\
+			4 & \$3,500 &  \$7,861.16 \\
+			5 & \$3,500 &  \$7,806.51 \\
+			6 & \$3,500 &  \$7,752.25 \\
+			7 & \$3,500 &  \$7,698.36 \\
+			8 & \$3,500 &  \$7,644.85 \\
+			9 & \$3,500 &  \$7,591.70 \\
+			10 & \$3,500 &  \$7,538.93 \\ 
+			11 & \$3,500 &  \$7,486.53 \\
+			12 & \$3,500 &  \$7,434.48 \\
+			13 & \$3,500 &  \$7,382.80 \\
+			14 & \$3,500 &  \$7,331.48 \\
+			15 & \$3,500 &  \$7,280.52 \\
+			16 & \$3,500 &  \$7,229.91 \\
+			17 & \$3,500 &  \$7,179.65 \\
+			18 & \$3,500 &  \$7,129.75 \\
+			19 & \$3,500 &  \$7,080.18 \\
+			20 & \$3,500 &  \$7,030.97 \\
+			21 & \$3,500 &  \$6,982.09 \\
+			22 & \$3,500 &  \$6,933.56 \\
+			23 & \$3,500 &  \$6,885.36 \\
+			24 & \$3,500 &  \$6,837.50 \\
+			25 & \$3,500 &  \$6,789.97 \\
+			26 & \$3,500 &  \$6,742.77 \\
+			27 & \$3,500 &  \$6,695.90 \\
+			28 & \$3,500 &  \$6,649.35 \\
+			29 & \$3,500 &  \$6,603.13 \\
+			30 & \$3,500 &  \$6,557.23 \\
+			31 & \$3,500 &  \$6,511.65 \\
+			32 & \$3,500 &  \$6,466.38 \\
+			33 & \$3,500 &  \$6,421.43 \\
+			34 & \$3,500 &  \$6,376.80 \\
+			35 & \$3,500 &  \$6,332.47 \\
+			36 & \$3,500 &  \$6,288.45 \\
+			37 & \$3,500 &  \$6,244.74 \\
+			38 & \$3,500 &  \$6,201.33 \\
+			39 & \$3,500 &  \$6,158.22 \\
+			40 & \$3,500 &  \$6,115.41 \\
+			41 & \$3,500 &  \$6,072.90 \\
+			42 & \$3,500 &  \$6,030.69 \\
+			43 & \$3,500 &  \$5,988.77 \\
+			44 & \$3,500 &  \$5,947.14 \\
+			45 & \$3,500 &  \$5,905.79 \\
+			46 & \$3,500 &  \$5,864.74 \\
+			47 & \$3,500 &  \$5,823.97 \\
+			48 & \$3,500 &  \$5,783.49 \\
+			49 & \$3,500 &  \$5,743.29 \\
+			50 & \$3,500 &  \$5,703.36 \\
+			\hline
+		\end{tabular}
+	\end{minipage} \hspace{1cm} % Espacio entre las tablas
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+			\hline
+			\multicolumn{3}{|c|}{Tabla 1} \\ 
+			\hline
+				t & Ahorro & Monto Final  \\ 
+			\hline
+			51 & \$3,500 & \$5,663.72 \\ 
+			52 & \$3,500 &  \$5,624.35 \\
+			53 & \$3,500 &  \$5,585.25 \\
+			54 & \$3,500 &  \$5,546.42 \\
+			55 & \$3,500 &  \$5,507.87 \\
+			56 & \$3,500 &  \$5,469.58 \\
+			57 & \$3,500 &  \$5,431.56 \\
+			58 & \$3,500 &  \$5,393.80 \\
+			59 & \$3,500 &  \$5,356.31 \\
+			60 & \$3,500 &  \$5,319.08 \\
+			61 & \$3,500 & \$5,282.10 \\ 
+			62 & \$3,500 &  \$5,245.38 \\
+			63 & \$3,500 &  \$5,208.92 \\
+			64 & \$3,500 &  \$5,172.71 \\
+			65 & \$3,500 &  \$5,136.76 \\
+			66 & \$3,500 &  \$5,101.05 \\
+			67 & \$3,500 &  \$5,065.59 \\
+			68 & \$3,500 &  \$5,030.38 \\
+			69 & \$3,500 &  \$4,995.41 \\
+			70 & \$3,500 &  \$4,960.68 \\
+			71 & \$3,500 & \$4,926.20 \\ 
+			72 & \$3,500 &  \$4,891.96 \\
+			73 & \$3,500 &  \$4,857.95 \\
+			74 & \$3,500 &  \$4,824.18 \\
+			75 & \$3,500 &  \$4,790.65 \\
+			76 & \$3,500 &  \$4,757.35 \\
+			77 & \$3,500 &  \$4,724.28 \\
+			78 & \$3,500 &  \$4,691.44 \\
+			79 & \$3,500 &  \$4,658.82 \\
+			80 & \$3,500 &  \$4,626.44  \\
+			81 & \$3,500 & \$4,594.28\\ 
+			82 & \$3,500 &  \$4,562.34 \\
+			83 & \$3,500 &  \$4,530.63 \\
+			84 & \$3,500 &  \$4,499.13 \\
+			85 & \$3,500 &  \$4,467.86 \\
+			86 & \$3,500 &  \$4,436.80 \\
+			87 & \$3,500 &  \$4,405.86 \\
+			88 & \$3,500 &  \$4,375.33 \\
+			89 & \$3,500 &  \$4,344.92 \\
+			90 & \$3,500 &  \$4,314.72 \\
+			91 & \$3,500 & \$4,284.72\\ 
+			92 & \$3,500 &  \$4,254.94 \\
+			93 & \$3,500 &  \$4,225.36 \\
+			94 & \$3,500 &  \$4,195.99 \\
+			95 & \$3,500 &  \$4,166.82 \\
+			96 & \$3,500 &  \$4,137.86 \\
+			97 & \$3,500 &  \$4,109.09 \\
+			98 & \$3,500 &  \$4,080.53 \\
+			99 & \$3,500 &  \$4,052.16 \\
+			100 & \$3,500 &  \$4,024.00 \\
+			101 & \$3,500 &  \$3,996.02 \\
+			\hline
+		\end{tabular}
+	
+	\end{minipage}
+\end{figure}
+
+\newpage
+\vspace{-0.50cm}
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+			\hline
+			\multicolumn{3}{|c|}{Tabla 1} \\ 
+			\hline
+			
+			t & Ahorro & Monto Final  \\ 
+			\hline
+			102 & \$3,500 &  \$3,968.25 \\ 
+			103 &  \$3,500 &  \$3,940.66 \\
+			104 &  \$3,500 &  \$3,913.27 \\
+			105 &  \$3,500 &  \$3,886.07 \\
+			106 &  \$3,500 &  \$3,859.05 \\
+			107 &  \$3,500 &  \$3,832.23 \\
+			108 &  \$3,500 &  \$3,805.59 \\
+			109 &  \$3,500 &  \$3,779.13 \\
+			110 &  \$3,500 &  \$3,752.86 \\
+			111 &  \$3,500 &  \$3,726.78 \\ 
+			\hline
+		\end{tabular}
+	\end{minipage} \hspace{1cm} % Espacio entre las tablas
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+			\hline
+			\multicolumn{3}{|c|}{Tabla 1} \\ 
+			\hline
+			t & Ahorro & Monto Final  \\ 
+			\hline
+			112 &  \$3,500 &  \$3,700.87 \\
+			113 &  \$3,500 &  \$3,675.14 \\
+			114 &  \$3,500 &  \$3,649.60 \\
+			115 &  \$3,500 &  \$3,624.23 \\
+			116 &  \$3,500 &  \$3,599.03 \\
+			117 &  \$3,500 &  \$3,574.02 \\
+			118 &  \$3,500 &  \$3,549.17 \\
+			119 &  \$3,500 &  \$3,524.50 \\
+			120 &  \$3,5005 &  \$3,500.00 \\
+			\hline
+		\end{tabular}
+		
+	\end{minipage}
+\end{figure}
+
+
+\noindent Mientras que para el inciso b podemos ver que se divide el periodo en 2 donde los primeros 60 seran de depostios de \$3,500.00mxp, mientras que para los 60 restantes , son depositos de\$5,000.00mxp.
+
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+			\hline
+			\multicolumn{3}{|c|}{Tabla 2 deposito \$3500} \\ 
+			\hline
+			
+			t & Ahorro & Monto Final  \\ 
+			\hline
+				0 & &  \\ 
+			1 & \$3,500 &  \$8,027.40 \\
+			2 & \$3,500 &  \$7,971.60 \\
+			3 & \$3,500 &  \$7,916.19 \\
+			4 & \$3,500 &  \$7,861.16 \\
+			5 & \$3,500 &  \$7,806.51 \\
+			6 & \$3,500 &  \$7,752.25 \\
+			7 & \$3,500 &  \$7,698.36 \\
+			8 & \$3,500 &  \$7,644.85 \\
+			9 & \$3,500 &  \$7,591.70 \\
+			10 & \$3,500 &  \$7,538.93 \\ 
+			11 & \$3,500 &  \$7,486.53 \\
+			12 & \$3,500 &  \$7,434.48 \\
+			13 & \$3,500 &  \$7,382.80 \\
+			14 & \$3,500 &  \$7,331.48 \\
+			15 & \$3,500 &  \$7,280.52 \\
+			16 & \$3,500 &  \$7,229.91 \\
+			17 & \$3,500 &  \$7,179.65 \\
+			18 & \$3,500 &  \$7,129.75 \\
+			19 & \$3,500 &  \$7,080.18 \\
+			20 & \$3,500 &  \$7,030.97 \\
+			21 & \$3,500 &  \$6,982.09 \\
+			22 & \$3,500 &  \$6,933.56 \\
+			23 & \$3,500 &  \$6,885.36 \\
+			24 & \$3,500 &  \$6,837.50 \\
+			25 & \$3,500 &  \$6,789.97 \\
+			26 & \$3,500 &  \$6,742.77 \\
+			27 & \$3,500 &  \$6,695.90 \\
+			28 & \$3,500 &  \$6,649.35 \\
+			29 & \$3,500 &  \$6,603.13 \\
+			30 & \$3,500 &  \$6,557.23 \\
+
+			\hline
+		\end{tabular}
+	\end{minipage} \hspace{1cm} % Espacio entre las tablas
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+			\hline
+			\multicolumn{3}{|c|}{Tabla 2 deposito \$3500} \\ 
+			\hline
+			t & Ahorro & Monto Final  \\ 
+			\hline
+		31 & \$3,500 &  \$6,511.65 \\
+		32 & \$3,500 &  \$6,466.38 \\
+		33 & \$3,500 &  \$6,421.43 \\
+		34 & \$3,500 &  \$6,376.80 \\
+		35 & \$3,500 &  \$6,332.47 \\
+		36 & \$3,500 &  \$6,288.45 \\
+		37 & \$3,500 &  \$6,244.74 \\
+		38 & \$3,500 &  \$6,201.33 \\
+		39 & \$3,500 &  \$6,158.22 \\
+		40 & \$3,500 &  \$6,115.41 \\
+		41 & \$3,500 &  \$6,072.90 \\
+		42 & \$3,500 &  \$6,030.69 \\
+		43 & \$3,500 &  \$5,988.77 \\
+		44 & \$3,500 &  \$5,947.14 \\
+		45 & \$3,500 &  \$5,905.79 \\
+		46 & \$3,500 &  \$5,864.74 \\
+		47 & \$3,500 &  \$5,823.97 \\
+		48 & \$3,500 &  \$5,783.49 \\
+		49 & \$3,500 &  \$5,743.29 \\
+		50 & \$3,500 &  \$5,703.36 \\
+		51 & \$3,500 & \$5,663.72 \\ 
+		52 & \$3,500 &  \$5,624.35 \\
+		53 & \$3,500 &  \$5,585.25 \\
+		54 & \$3,500 &  \$5,546.42 \\
+		55 & \$3,500 &  \$5,507.87 \\
+		56 & \$3,500 &  \$5,469.58 \\
+		57 & \$3,500 &  \$5,431.56 \\
+		58 & \$3,500 &  \$5,393.80 \\
+		59 & \$3,500 &  \$5,356.31 \\
+		60 & \$3,500 &  \$5,319.08 \\
+			\hline
+		\end{tabular}
+		
+	\end{minipage}
+\end{figure}
+
+Por lo que en los proximos 60 periodos depositara \$5,000.00
+\newpage
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+			\hline
+			\multicolumn{3}{|c|}{Tabla 2 pago de\$5,000} \\ 
+			\hline
+			
+			t & Ahorro & Monto Final  \\ 
+			\hline
+	61 & \$5,000 & \$7,545.86 \\ 
+	62 & \$5,000 &  \$7,493.41 \\
+	63 & \$5,000 &  \$7,441.32 \\
+	64 & \$5,000 &  \$7,389.59 \\
+	65 & \$5,000 &  \$7,338.22 \\
+	66 & \$5,000 &  \$7,287.21 \\
+	67 & \$5,000 &  \$7,236.56 \\
+	68 & \$5,000 &  \$7,186.25 \\
+	69 & \$5,000 &  \$7,136.30 \\
+	70 & \$5,000 &  \$7,086.69\\
+	71 & \$5,000 & \$7,037.43 \\ 
+	72 & \$5,000 &  \$6,988.51 \\
+	73 & \$5,000 &  \$6,939.93 \\
+	74 & \$5,000 &  \$6,891.69 \\
+	75 & \$5,000 &  \$6,843.78 \\
+	76 & \$5,000 &  \$6,796.21 \\
+	77 & \$5,000 &  \$6,748.97 \\
+	78 & \$5,000 &  \$6,702.05 \\
+	79 & \$5,000 &  \$6,655.46 \\
+	80 & \$5,000 &  \$6,609.20  \\
+	81 & \$5,000 & \$6,563.26 \\ 
+	82 & \$5,000 &  \$6,517.63 \\
+	83 & \$5,000 &  \$6,472.33 \\
+	84 & \$5,000 &  \$6,427.34 \\
+	85 & \$5,000 &  \$6,382.66 \\
+	86 & \$5,000 &  \$6,338.29 \\
+	87 & \$5,000 &  \$6,294.23 \\
+	88 & \$5,000 &  \$6,250.48 \\
+	89 & \$5,000 &  \$6,207.03 \\
+	90 & \$5,000 &  \$6,163.88 \\
+			\hline
+		\end{tabular}
+	\end{minipage} \hspace{1cm} % Espacio entre las tablas
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\begin{tabular}{|| c c c ||} 
+			\hline
+			\multicolumn{3}{|c|}{Tabla 2 pago de\$5,000} \\ 
+			\hline
+			t & Ahorro & Monto Final  \\ 
+			\hline
+		
+			91 & \$5,000 & \$6,121.03\\ 
+			92 & \$5,000 &  \$6,078.48 \\
+			93 & \$5,000 &  \$6,036.23 \\
+			94 & \$5,000 &  \$5,994.27 \\
+			95 & \$5,000 &  \$5,952.60\\
+			96 & \$5,000 &  \$5,911.22  \\
+			97 & \$5,000 &  \$5,870.13  \\
+			98 & \$5,000 &  \$5,829.33  \\
+			99 & \$5,000 &  \$5,788.80  \\
+			100 & \$5,000 &  \$5,748.56  \\
+			101 & \$5,000 &  \$5,708.60 \\
+			102 & \$5,000 &  \$5,668.92  \\ 
+			103 &  \$5,000 &  \$5,929.52  \\
+			104 &  \$5,000 &  \$5,590.38  \\
+			105 &  \$5,000 &  \$5,551.52  \\
+			106 &  \$5,000 &  \$5,512.93  \\
+			107 &  \$5,000 &  \$5,474.61  \\
+			108 &  \$5,000 &  \$5,436.55  \\
+			109 &  \$5,000 &  \$5,398.76  \\
+			110 &  \$5,000 &  \$5,361.23  \\
+			111 &  \$5,000 &  \$5,323.97  \\ 
+			112 &  \$5,000 &  \$5,286.96  \\
+			113 &  \$5,000 &  \$5,250.21  \\
+			114 &  \$5,000 &  \$5,213.71  \\
+			115 &  \$5,000 &  \$5,177.47  \\
+			116 &  \$5,000 &  \$5,141.48  \\
+			117 &  \$5,000 &  \$5,105.74  \\
+			118 &  \$5,000 &  \$5,070.25 \\
+			119 &  \$5,000 &  \$5,035.00  \\
+			120 &  \$5,000 &  \$5,000.00 \\
+			\hline
+		\end{tabular}
+		
+	\end{minipage}
+\end{figure}
+
+\noindent Por lo que podemos ver que aqui el capital final es mayor siendo la suma de todos los pagos con interes generado de un valor de \$766,171.25, teniendo un diferencial de interes ganado de \$510,000 - \$766,171.25 = \$256,171.25 de interes ganado durante todo el periodo de 120 capitalizaciones, siendo mayor por lo que conviene mas la ultima opcion de 60 capitalizaciones a \$3,500  y las 60 restantes a \$5,000.
+
+\newpage
+
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 3]
+¿A qué tasa de interés compuesto de deben depositar \$17,500.00 mxp para disponer de \$20,000.00mxp en un plazo de 15 meses? Considere que los intereses se capitalizan cada quincena.
+\end{tcolorbox}
+
+\section*{Respuesta 3}
+\vspace{-0.10cm}
+\noindent$ K_f = \$20,000mxp $ \hspace{0.15cm} | \hspace{0.25cm}  $K_0 = \$17,500.00mxp \hspace{0.25cm} | \hspace{0.25cm} $m = 24$ \hspace{0.25cm}  |  \hspace{0.25cm}  $n = 1.25 \\
+
+\noindent Por lo que; 
+
+\begin{center}
+$	i = \left[\left(\frac{K_f}{K_0}\right)^{\frac{1}{m*n}}-1\right]*m\hspace{0.25cm} \longrightarrow\hspace{0.25cm} 	i = \left[\left(\frac{20,000}{17,500}\right)^{\frac{1}{30}}-1\right]*24 = .10706321
+  $
+\end{center}
+
+\noindent Por lo tanto podemos ver que la tasa queda como $.10706321 * 100 \hspace{0.25cm} \longrightarrow\hspace{0.25cm} 10.706321\% $ , por lo que podemos ver que invirtio a una tasa de $10.7063\%$ anual en una inversion de  $\$17,500.00 $ en 15 meses.
+
+
+\section* {5. Ecuaciones de Valor}\vspace{-0.25cm}\normalsize 
+\begin{flushright}
+	La pereza no trae riqueza\\
+Proverbios 6:9-11
+\end{flushright}
+
+Una ecuación de valor es una equivalencia en Matemáticas Financieras de dominio discreto y continuo, por lo cual se ha convertido en una de las herramientas mas empleadas, debido a que permiten resolver diversos tipos de problemas financieros en períodos de tiempo distintos, basados en el principio del precio del dinero como piedra angular para el analisis de ecuaciones.\\
+
+Una ecuación de valor se basa en el hecho que el dinero tiene un valor que depende del tiempo, es por esto que un peso en el presente no valdrá lo mismo que un peso en el futuro. Para resolver ejercicios de ecuaciones de valor normalmente se deben seguir ciertos pasos:
+
+\begin{itemize}
+	\item Paso 1: Colocar todas las cantidades en una misma escala de tiempo y valor de tasa de interes.
+	
+	\item Paso 2: Llevar todas las deudas a su fecha de vencimiento original con su tasa de interés especifica, ello como facilitador del análisis.
+	
+	\item Paso 3: Llevar todos los flujos de efectivo a una fecha focal,la cual sera el punto de comparación de la ecuación de valor. 
+	
+	\item Paso 4: Igualar el valor de los flujos de efectivo. 
+\end{itemize}
+
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 4]
+Encuentre el Valor Presente de \$71’644.00 mxp, que vencen dentro de un año y 10 meses, si la tasa de interés es del 1.5 \% mensual capitalizable cada cuatrimestre.
+\begin{itemize}
+	\item a) Realice y especifique la nueva composición de la operación para el cálculo de los intereses.
+	
+	\item b) El monto compuesto traído a valor presente.
+	
+	\item c) La explicación de la composición de la tasa cuatrimestral.
+\end{itemize}
+\end{tcolorbox}
+
+\vspace{-0.50cm}
+\section*{Respuesta 4}
+\vspace{-0.10cm}
+\noindent$ K_f =\$71,644.00 $ \hspace{0.25cm} | \hspace{0.25cm}  $n = 1.83$ (dado en años ) \hspace{0.25cm} | \hspace{0.25cm} $m = 3$ (cuatrimestral) \hspace{0.25cm}  |  \hspace{0.25cm}  $K_0=? $ \hspace{0.25cm}  | \hspace{0.25cm} $n=22$ (1 año, 10 meses) \hspace{0.25cm}  | \hspace{0.25cm} $i=1.5\%*(12)=18\%$\\
+
+\noindent a) Para calcular la nueva composcion debemos tener que convertir al mismo periodo o frecuencia los datos de tasa y periodo, por lo que en este caso al convertirlo a cuatrimestral los dos valores, por lo que quedaria asi.\\
+
+\noindent Dada la conversion de tiempo (a cuatrimestral) $3*\left(\frac{22}{12}\right)= 5.5 $
+
+\noindent Dada la conversion del periodo de interes anualizado a periodicidad cuatrimestral queda; $\frac{18\%}{3}=6\%$
+
+\noindent Por lo que al traer el monto a Valor Actual queda con la siguiente ecuacion;\\
+
+$\dfrac{K_f}{\left(1+\frac{i}{m}\right)^{m*n}}$
+$\hspace{0.25cm} \longrightarrow\hspace{0.25cm}$
+$\dfrac{\$71,644.00}{\left(1+\frac{18\%}{3}\right)^{3*\frac{22}{12}}}$
+$\hspace{0.25cm} \longrightarrow\hspace{0.25cm}$ $\dfrac{\$71,644.00}{\left(1+6\%\right)^{5.5}} = \$51,999.31$\\
+
+
+\noindent Por lo que al ver podemos ver que el capital semilla o capital de origen es de \$51,999.31 dado su conversion de monto a capital presente y su conversion cuatrimestral de periodo de capitalizacion (m) y tiempo (n), para poder calcular y hacer la conversion correcta al periodo deseado.
+
+
+\section* {6. La inflación y la ecuación de Fischer}\vspace{-0.25cm}\normalsize 
+
+La inflación es el aumento generalizado y sostenido de los precios de los bienes y servicios durante un período determinado. En México, la inflación se calcula con base en el Índice Nacional de Precios al Consumidor (INPC), si el índice aumenta, hay inflación y si baja, hay deflación. Estas variaciones de
+precios repercuten directamente en el poder adquisitivo y en el bienestar de los consumidores, razón por la cual el INPC es un indicador trascendente y de interés general para la sociedad en su conjunto.
+
+Ahora, cuando algunos precios varían de manera inesperada tienden a alterar la trayectoria de crecimiento de los demás, esto distorsiona la medición general de la inflación al no reflejar su comportamiento normal en el mediano plazo. Para medir un nivel de inflación más estable, se calcula la inflación subyacente que elimina los precios más volátiles de los bienes y servicios que constituyen la canasta del INPC, dejando sólo los productos y servicios más estables. Estos bienes y servicios más volátiles son los agropecuarios y
+energéticos.
+\vspace{0.25cm}
+	\begin{tcolorbox} 
+	\noindent 
+	\textbf{\normalsize \textbf{Info Tipos de Inflacion}:}
+	\setlength{\parindent}{0.5cm}
+	
+\begin{itemize}
+	\item \textbf{Inflación subyacente:} incremento de los precios de un subconjunto de bienes y servicios en el INPC. Ofrece mayor certidumbre, al ser una mejor aproximación de cómo se comportarán los precios en el mediano plazo para facilitar la planeación y toma de decisiones de consumo, ahorro e inversión.
+	
+	\item \textbf{Inflación no subyacente:} incluye los componentes más volátiles del INPC, que tienden a experimentar fluctuaciones significativas en sus precios debido a factores externos como cambios en
+	los precios internacionales de los alimentos y productos energéticos más susceptibles a variaciones temporales y factores externos como eventos climáticos, fluctuaciones en los precios del petróleo, así como choques de oferta que pueden tener un impacto transitorio en los precios.
+\end{itemize}
+\end{tcolorbox} 
+\vspace{0.25cm}
+En economía, se le llama “ilusión monetaria” a la posibilidad de que las personas crean que son más ricas porque tienen más dinero, sin percibir que ese dinero puede valer cada día menos. \textbf{Técnicamente, que las personas responden a los términos nominales, y no reales, en los precios.} Para la mayoría de los expertos, la ilusión monetaria no existe, y las personas sí reaccionan al “precio real” de los bienes y servicios, es decir, pueden descontar el efecto de la inflación. Tal vez esto sea cierto para los traders y comerciantes, acostumbrados a mantener la relación de los precios en la mente, pero dudo que funcione para la mayoría de las personas.
+
+Por su parte, el efecto de Fisher establece que la tasa de interés nominal se ajusta para reflejar cambios en la tasa de interés real y en la inflación esperada. Específicamente, la tasa de interés de un bono o un préstamo es aproximadamente equivalente a la suma de la tasa de interés real y la tasa de inflación que se espera durante el período del bono o préstamo. En finanzas, la ecuación sirve para explicar la tasa nominal de interés en función de la tasa real de interés y la inflación. De los tres conceptos que la ecuación
+relaciona, asumimos que la inflación y la tasa real de interés son determinados fuera de la ecuación (son exógenas o predeterminadas).
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 5]
+	La inflación mensual en un país de la Unión Europea se ha mantenido aproximadamente constante,en un promedio de 0.37 \%. ¿Cuál era el precio de un bien hace 14 meses, si actualmente cuesta 194.60 euros?
+\end{tcolorbox}
+
+\section*{Respuesta 5}
+\vspace{-0.10cm}
+\noindent$ \$194.60 $ \hspace{0.25cm} | \hspace{0.25cm}  n = 14 meses \hspace{0.25cm} | \hspace{0.25cm} $i = 0.37\%$ \hspace{0.25cm}  |  \hspace{0.25cm}  $P_f=P_0\left[i+n\right]^n$ \hspace{0.25cm}  
+
+\noindent$K_f=K_0\left(1+\frac{i}{m}\right)^{m*n} \hspace{0.25cm} \longrightarrow \hspace{0.25cm}  K_0=\dfrac{K_f}{\left(1+\frac{i}{m}\right)^{m*n}} \hspace{0.25cm} \longrightarrow \hspace{0.25cm} K_0=\dfrac{\$194.60}{\left(1+0.0037\right)^{14}} = \$184.7940 $ \\ 
+
+\noindent Por lo que podemos ver que el precio original hace 14 meses antes de los efectos inflacionarios, trayendo el monto o capital final a valor presente es de \$184,7940 euros
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 6]
+	Demuestre (matemáticamente) que de la fórmula de las tasas de interés equivalentes, se llega a la tasa efectiva. Expliqué su formulación e interpretación para llegar hasta ella
+\end{tcolorbox}
+\vspace{-0.45cm}
+\section*{Respuesta 6}
+%\hspace{0.25cm} \longrightarrow \hspace{0.25cm}
+\noindent$K_f=K_0\left[1+\dfrac{i}{m}\right]^{m*n} = \hspace{0.15cm} K_0\left[1+\dfrac{i}{q}\right]^{q*n} \hspace{0.25cm}  \longrightarrow \hspace{0.25cm} \left[1+\frac{i}{m}\right]^{m*n} = \hspace{0.15cm} \left[1+\frac{i}{q}\right]^{q}  $ \\
+
+\noindent Por lo tanto podemos ver que se resume a; 
+\begin{center}
+	$i=\left[\left[1+\frac{i}{m}\right]^{\frac{m}{q}}-1\right] * q $
+\end{center}
+
+\noindent Aqui se puede observar que primero hacemos una igualdad dos ecuaciones  de valor futuro de interes compuesto, la primera en capitalizacion "m" y la segunda con una capitalizacion "q" por lo que buscaremos despejar ambas ecuaciones se convierten en una sola, por lo que; queda la ecuacion como , interes es igual a 1 que represetna el (1005\% del porcentaje del capital ), esto sumando el interes dividio en la capitalizacion "m",para poder llevar la tasa al periodo de capitalizacion "$\frac{m}{q}$", donde se le vuelve a restar el 1 quedando el incremento en el tiempo de interes sobre la capitalizacion, que multiplica el periodo de capitalizacion q.
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 7]
+¿En cuál banco invertiría usted su dinero?
+\begin{itemize}
+	
+	\item a) En JP Morgan Chase \& Co, que le ofrece una tasa nominal anual del 26 \% capitalizable diariamente.
+	
+	\item b) En Goldman Sachs Group, que le ofrece el 27.5 \% nominal anual capitalizable cada 28 días.
+\end{itemize}
+
+	Realice la decisión en base al criterio del interés anual efectivo. Muestre los porcentajes de rendimientos anuales y sus diferencias.
+	
+\end{tcolorbox}
+\vspace{-0.55cm}
+\section*{Respuesta 7}
+\vspace{-0.10cm}
+\noindent \textbf{Opciones de inversion:} \\
+
+\noindent J.P. Morgan Chase \& Co.\hspace{0.25cm} $i = 26\%$ \hspace{0.25cm} $Frecuencia=364$ dias
+
+\noindent Goldman Sachs Group \hspace{0.25cm} $i = 27.5\%$ \hspace{0.25cm} $Frecuencia=28$ dias\\
+
+\noindent Tomando en cuenta un periodo anual de $365$ o $360$ dias, Dada la siguiente ecuacion para calcular la tasa anual efectiva:
+
+\begin{center}
+{\Large \noindent $\left((1+\frac{i}{m})^{\frac{m}{q}}-1\right)*q$} %$\hspace{0.15cm}  \longrightarrow \hspace{0.15cm}$
+\end{center}
+
+\noindent J.P. Morgan Chase; $\left((1+\frac{26\%}{364})^{\frac{364}{1}}-1\right)*1 = 0.296810$
+$\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ = $29.6810\%$\\
+\noindent $\left((1+\frac{26\%}{360})^{\frac{360}{1}}-1\right)*1 = 0.296808$
+$\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ = $29.6808\%$\\
+
+\noindent Goldman Sachs Group; Para la conversion de la capitalizacion mensual a anual; $\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ $\frac{364}{28}=13$ y  $\frac{360}{28}=12.85714$
+
+\noindent $\left((1+\frac{27.50\%}{13})^{\frac{13}{1}}-1\right)*1 = 0.31276$
+$\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ = $31.2760\%$
+
+\noindent $\left((1+\frac{27.50\%}{12.85714})^{\frac{12.85714}{1}}-1\right)*1 = 0.312719$
+$\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ = $31.2719\%$
+
+\noindent Por lo que podemos ver que la mejor tasa es al de Goldman Sachs Group, ya que es la tasa efectiva anual es mejor teniendo en cuenta el periodo anual de 364 dias, dando un resultado de: $31.2760-29.6810=1.5950$ , por lo que se ve que hay un incremento de 159 puntos base de ventaja de la tasa de Goldman Sachs sobre la de J.P. Morgan Chase, por lo que la opcion de Goldman Sachs Group es la mejor opcion donde invertiria mi dinero, teniendo en cuenta el periodo de capitalizacion diaria basado en (364 dias).
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 8]
+Se invierten \$85’000.00 mxp a una tasa nominal del 18 \% capitalizable cada mes durante nueve meses. Calcule:
+\begin{itemize}
+	
+	\item a) El monto al final de los nueve meses
+	
+	\item b) La tasa efectiva anual, y
+	
+	\item c) La tasa efectiva en el período de inversión, es decir, en nueve meses.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{Respuesta 8}
+\vspace{-0.10cm}
+\noindent  $i = 18\%$ \hspace{0.25cm} $m=12$ \hspace{0.25cm} $n=\frac{9}{12}=0.75$  \hspace{0.25cm} $K_0=\$85,000.00 mxp$\\
+
+\noindent Dada la ecuacion;
+
+\noindent a) $K_f=\left(1+\frac{i}{m}\right)^{m*n}\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}K_f=\left(1+\frac{18\%}{12}\right)^{12*0.75}=\$97,188.15mxp$ despues de invertir a 9 meses en una tasa anual de 18\%\\
+
+\noindent b) $i$ efectiva anual $= \left(\left(1+\frac{i}{m}\right)^{m*n}\right)-1\hspace{0.05cm}  \longrightarrow \hspace{0.05cm} \left(\left(1+\frac{18\%}{12}\right)^{12*1}\right)-1 = 19.561817\% $ anual efectiva\\
+
+\noindent c) $i$ efectiva 9 meses $= \left(\left(1+\frac{i}{m}\right)^{m*n}\right)-1\hspace{0.05cm}  \longrightarrow \hspace{0.05cm} \left(\left(1+\frac{18\%}{12}\right)^{12*0.75}\right)-1 = 14.338998\% $ efectiva 9 meses.
+
+\noindent Por lo que podemos decir que la difrencia entre los periodos de 1 año a 9 meses sobre la tasa efectiva es de 156.2 puntos base de diferencia, entre la tasa tasa nominal anual(18\%) y la tasa efectiva (19.5618\%) 
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 9]
+	Calcule la tasa de interés nominal capitalizable cada quincena que produce una tasa efectiva del 16.1292 \% anual.
+\end{tcolorbox}
+\vspace{-0.45cm}
+\section*{Respuesta 9}
+\vspace{-0.10cm}
+\noindent  i objetivo = $16.1292\%$ \hspace{0.25cm} $Frecuencia=15$ dias (24 periodos anuales) \hspace{0.25cm} n= 1 año
+
+
+\noindent En este caso esta pregunta se puede resolver con el metodo de buscar objetivo en Excel, por lo que primero se da una tasa aleatoria (que sera el que modificara la funcion de buscar objetivo) , posteriormente se hace la ecuacion de calculo de tasa efectiva ; 
+
+
+
+\begin{center}
+
+$\left(\left(1+\frac{i}{m}\right)^{m*n}\right)-1\hspace{0.05cm}$ 
+	
+\end{center}
+
+\noindent Ya teniendo la ecuacion dada en el resultado de la tasa efectiva toca con la funcion de objetivo modificar el valor porcentual de la tasa de interes y marcar que queremos el valor de 16.1292\% sobre el valor donde introducimos la ecuacion en excel, al terminar de calcular excel nos va arrogar una tasa muy parecida, (para mayor precision el valor de la tasa aleatoria debe ser extremadamente alto ), con lo que el numero de iteraciones sera mayor y el error que tendremos, siendo la diferencia entre la tasa arrojada por el resultado y la tasa objetivo sera cada vez mas cercano a 0.
+
+\noindent Por lo que los valores arrojados corresponderan a los siguientes; 
+\begin{center}
+	
+	$\left(\left(1+\frac{15.05\%}{24}\right)^{24*1}\right)-1=16.1292\%\hspace{0.05cm}$ con un margen de error de $0.007$  
+	
+\end{center}
+
+	\noindent El error tambien se puede disminuir con la funcion de buscar objetivo y con la finalidad de que tienda a 0.000 con mayores decimales, para una tasa mas precisa.
+	
+
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 10]
+El 7 de abril de 2020, Rodolfo vendió su automóvil en \$104’000.00 mxp y, el mismo día, invirtió el dinero en una cuenta que paga una tasa de interés del 7 \% nominal anual, capitalizable cada mes.
+
+\begin{itemize}
+\item 	a) ¿Cuál fue el monto final de su inversión un año después, en pesos constantes del 7 de abril del 2021, si la inflación mensual promedio en el año fue del 0.3340 \%?
+	
+\item b) ¿Cuál es la tasa real anual capitalizable cada mes, y la tasa real anual efectiva?
+\end{itemize}
+\end{tcolorbox}
+\section*{Respuesta 10}
+\vspace{-0.10cm}
+\noindent $ K_0 = \$104,000.00  \hspace{0.25cm} i=7\% \hspace{0.25cm}$ Frecuencia = $12 $ \hspace{0.25cm} n = 1 año  \hspace{0.25cm}  $\pi = 0.3340\%$ \hspace{0.25cm} \\
+
+\noindent a) $0.03340\% * 12 = 4.0080\%$ \hspace{0.25cm} inflacion por crecimiento = $\left(1+0.00334\%\right)^{12}=4.082453\% $, dado el factor de acumulacion inflacionaria.
+
+\noindent \$104,000.00*$\left(1+\frac{7\%}{12}\right)^{12*1}=\$111,518.17mxp$ de inversion al terminar el año.
+
+\noindent Teniendo encuenta el factor inflacionario quedaria; $\dfrac{\$111,518.17}{1.040824529}=\$107,144.06$ siendo el monto final real invertido despues de contabilizar la tasa inflacionaria acumulativa.\\
+
+\noindent b) Calculando la tasa del diferencial de la inversion y de el capital se tiene la siguiente ecuacion; $\left(\dfrac{\$107,144.06}{\$104,000.00}\right)^{\frac{1}{12}}=1.002485033\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}(1.002485033-1) *12 = 0.0298204 \%  $
+\noindent Ahora para calcular la tasa real anual capitalizable cada mes; 
+$\left(\left(1+\frac{12\%}{12}\right)^{12*1}\right)-1=12.682503\%$
+
+\noindent Dada la ecuacion de Fisher podemos ver que;
+$\left(\dfrac{(1+i)}{(1+\pi)}\right)-1$, por lo que ayudara a encontrar la tasa real efectiv, sustituyendo da los valores de:
+
+$\left(\dfrac{(1+0.12682503)}{(1+0.04082453)}\right)-1= 8.26272816\% $
+siendo esta la tasa efectiva real anual
+
+
+
+\vspace{0.45cm}
+\newpage
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 11]
+¿Qué cantidad deberá depositar Bertha hoy en un proyecto de inversión que paga 1.13 \% mensual, capitalizable de manera bimestral? Los aspectos clave para la asesoría financiera de Bertha son:
+	
+	\begin{itemize}
+		\item 	a) Bertha desea retirar \$25,000.00 mxp en 5 meses
+		
+		\item b) Retirar \$40,000.00 mxp en un año (12 meses)
+		
+		\item c) Tener un saldo disponible en cuenta igual al 25 \% del capital original depositado en el mes 15
+	\end{itemize}
+\end{tcolorbox}
+
+\section*{Respuesta 11}
+\vspace{-0.10cm}
+\noindent $ K_0 = \$104,000.00  \hspace{0.25cm} i=1.13\% (mensual) \hspace{0.25cm}$ Frecuencia = bimestral $ \hspace{0.25cm} n1 = 5 meses  \hspace{0.25cm}  n2 = 12 meses \hspace{0.25cm}$
+
+\noindent $i = 0.0678\%  \hspace{0.25cm} m = 6  \hspace{0.25cm} K_0 = 10,000 \hspace{0.25cm} K_f(5)=\$25,000 \hspace{0.25cm} K_f(12)= \$40,000 $
+
+\noindent Conversion de tasa: 1.13\% mensual a bimestral: $1.13\% * 6 = 6.78\% $ \\
+
+\noindent $\dfrac{\$25,000}{(1+\frac{6.78\%}{6})^{6*\frac{5}{12}}} = \$24,307.48$ capital necesario para la inversion 5 meses (obtener \$25,00). \\
+\noindent $\dfrac{\$40,000}{(1+\frac{6.78\%}{6})^{6*\frac{12}{12}}} = \$37,392.11$ capital necesario para la inversion a 12 meses (obtener \$40,000).\\
+
+\noindent Tasa del 25\% en 15 meses: $37,392.11$ + $24,307.48$ = \$61,699.5909 \\
+
+\noindent {$1-\left[\dfrac{0.25}{\left(1+\dfrac{6.78\%}{6}\right)}\right]=0.770205328$
+$\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$ 
+$\dfrac{61,699.5809}{0.770205328}=80,107.97718$\\\\
+
+\noindent$\dfrac{0.25*80,107.97718}{(1+\frac{6.78\%}{6})^{6*\frac{15}{12}}}=\$18,408.39$\\
+
+\noindent Siendo el capital original \$10,000 el 25\% de este representaria \$2,500, por lo que para tener ese saldo disponible debe depositar $\$18,408.39$
+
+\noindent Siendo $K_0=\$80,107.97718 $ \\
+\noindent $K_0(5) = 80,107.98*(1+\frac{6.78\%}{6})^{2.5} = \$82,390.24 - \$25,000 = \$57,390.24 $\\ 
+
+\noindent $K_0(12) = \$57,390.24*(1+\frac{6.78\%}{6})^{6*\frac{7}{12}} = \$59,692.27 - \$40,000 = \$19,692.27 $\\ 
+
+\noindent $K_0(15) = \$19,692.27*(1+\frac{6.78\%}{6})^{6*\frac{9}{12}} = \$20,713.61 $ Se puede buscar objetivo modificando este valor con que tienda a el esperado de \textbf{$20,027$} modificando la ultima funcion donde se realizo la opearcion para que cambie con mayor precision el valor del 100\% del capital original (80,107.98).
+\newpage
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 12]
+	Deníz tiene el siguiente esquema de deudas con el Dr. Bringas:
+	
+	\begin{itemize}
+		\item a) \$36,110.00 mxp dentro de seis meses.
+		
+		\item b) \$52,430.00 mxp que debe de pagar dentro de 10 meses.
+
+	\end{itemize}
+	
+El Dr. Bringas aceptó recibir un abono hoy por \$25,000.00 mxp, que Deníz tenía disponibles. Si Deníz desea liquidar su adeudo mediante un segundo pago de \$55,000.00 mxp, ¿En qué fecha (mes) deberá realizarlo?	
+
+
+La tasa de interés para la valuación del contrato es del 24 \% nominal anual, capitalizable cada bimestre.
+\end{tcolorbox}
+\section*{Respuesta 12}
+\vspace{-0.10cm}
+
+\noindent$ K_n = \$55,000.00  \hspace{0.25cm} K_0 = \$25,000.00 \hspace{0.25cm} i=24\%  \hspace{0.25cm} $deuda descontada $=\$50,195 \hspace{0.25cm} m = 6   \hspace{0.25cm} $
+
+\noindent $n = 0.3884757$(años) 
+
+\noindent  Trayendo a valor presente las deudas que tiene queda; $\dfrac{36,110}{1+\frac{0.24}{6}^{6*\frac{6}{12}}}$ +  $\dfrac{52,430}{1+\frac{0.24}{6}^{6*\frac{10}{12}}}= \$75,195.30$\\
+
+\noindent Mientras que con el monto original queda; \$36,110.00+ \$52,430.00 = \$88,540.00, habiendo una diferencia de este en contra parte de la deuda en valor presente(\$$75,195.30$) de =  \$13,344.70 a favor siendo mayor la sumatoria de la deuda en valor futuro.
+
+\noindent Por lo que la sumatoria el flujo de la deuda traida a valor presente restandole el capital semilla queda la deuda descontada de  \$50,195.30.
+
+\noindent $\$75,195.30 - 25,000 = \$50,195.30 $ 
+
+\noindent Para calcular el goal seek se realiza la siguiente ecuacion: $50,195\left(1+\frac{.24}{6}\right)^{0.3884757*6}$ en este caso como queremos n que es el tiempo podemos sacarlo con buscar objetivo en Excel, simplemente tememos esta ecuacion con un tiempo aleatorio , ya que conocemos la deuda descontada, por lo que: simplemente nos posicionamos en la celda donde esta la funcion, que es donde se dessarrollo la ecuacion del goal seek, no importa que el valor este mal, mientras que los datos arrojados esten bien, simplemente vamos a iterar el tiempo (*n valor que va cambiar), para que nos arroje el objetivo que desamos que es que el valor que nos arroje cambiando la variable del tiempo sea \$55,000 (valor esperado), por lo que despues de este calculo realizado por Excel nos arroja el resultado del tiempo en años dado el valor de 0.388475706, con un margen de error de 0.00002, buscando reducirlo al minimo siempre o que no sea tan significativo.
+
+\newpage
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 13]
+	Se otorga un préstamo a un amigo por un monto de \$150’000.00 mxp. En el acuerdo se pacta el pago del préstamo a manera de pagos vencidos de manera trimestral. Si la tasa del trato es del 12 \% nominal anual capitalizable trimestralmente y la deuda se liquidará en 5 años:
+	
+	\begin{itemize}
+		\item a) Calcule el monto de los pagos y demuestre que su cálculo es el correcto llevando todos los flujos de efectivo a valor presente.
+		
+		\item b) Si en el primer trimestre se pagan \$40’000.00 mxp¿Cuál es el monto del pago equilibrado remanente?
+		
+	\end{itemize}
+\end{tcolorbox}
+
+\section*{Respuesta 13: Tablas de Amortizacion} Para el inciso a) el pago debe ser de \$10,082, dado la siguiente ecuacion:\\
+
+\begin{center}$Adeudo \div \left(\frac{1 - \left(1 + \frac{\text{i}}{m}\right)^{-m \cdot n}}{\frac{\text{i}}{m}}\right)$ $\hspace{0.05cm}  \longrightarrow \hspace{0.05cm}$  $\$150,000 \div \left(\frac{1 - \left(1 + \frac{\text{0.12}}{4}\right)^{-4 * 5}}{\frac{\text{0.12}}{4}}\right)=\$10,082$
+\end{center}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c c c c }
+		\hline
+		\textbf{t} & \textbf{Adeudo} & \textbf{Pago} & \textbf{Saldo} \\
+		\hline
+		0 & \$150,000.00 & & \$150,000.00 \\
+		1 & \$154,500.00 & \$10,082 & \$144,417.64 \\
+		2 & \$148,750.17 & \$10,082 & \$138,667.82 \\
+		3 & \$142,827.85 & \$10,082 & \$132,745.50 \\
+		4 & \$136,727.86 & \$10,082 & \$126,645.50 \\
+		5 & \$130,444.87 & \$10,082 & \$120,362.51 \\
+		6 & \$123,973.39 & \$10,082 & \$113,891.03 \\
+		7 & \$117,307.76 & \$10,082 & \$107,225.41 \\
+		8 & \$110,442.17 & \$10,082 & \$100,359.81 \\
+		9 & \$103,370.61 & \$10,082 & \$93,288.25 \\
+		10 & \$96,086.90 & \$10,082 & \$86,004.54 \\
+		11 & \$88,584.68 & \$10,082 & \$78,502.32 \\
+		12 & \$80,857.39 & \$10,082 & \$70,775.04 \\
+		13 & \$72,898.29 & \$10,082 & \$62,815.93 \\
+		14 & \$64,700.41 & \$10,082 & \$54,618.05 \\
+		15 & \$56,256.60 & \$10,082 & \$46,174.24 \\
+		16 & \$47,559.47 & \$10,082 & \$37,477.11 \\
+		17 & \$38,601.42 & \$10,082 & \$28,519.07 \\
+		18 & \$29,374.64 & \$10,082 & \$19,292.28 \\
+		19 & \$19,871.05 & \$10,082 & \$9,788.70 \\
+		20 & \$10,082.36 & \$10,082 & \$0.00 \\
+		\hline
+	\end{tabular}
+	\caption{Tabla de Adeudo, Pago y Saldo}
+\end{table}
+
+	
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{@{}r S[table-format=6.2] S[table-format=6.2] S[table-format=6.2] S[table-format=6.2] S[table-format=6.2]@{}}
+			\toprule
+			\textbf{t} & \textbf{Adeudo} & \textbf{Capital} & \textbf{Interés} & \textbf{Pago} & \textbf{Saldo} \\
+			\midrule
+			0  &  150000.00 &          &          &          & 150000.00 \\
+			1  & 154500.00 & 4500.00  & 5582.36  & 10082.00 & 144417.64 \\
+			2  & 148750.17 & 5749.83  & 4332.53  & 10082.00 & 138667.82 \\
+			3  & 142827.85 & 5922.32  & 4160.03  & 10082.00 & 132745.50 \\
+			4  & 136727.86 &  6099.99  & 3982.36  & 10082.00 & 126645.50 \\
+			5  & 130444.87 & 6282.99  & 3799.37  & 10082.00 & 120362.51 \\
+			6  & 123973.39 & 6471.48  &  3610.88  & 10082.00 & 113891.03 \\
+			7  &  117307.76 & 6665.63  & 3416.73  & 10082.00 & 107225.41 \\
+			8  & 110442.17 & 6865.59  & 3216.76  & 10082.00 & 100359.81 \\
+			9  & 103370.61 & 7071.56  & 3010.79  & 10082.00 & 93288.25 \\
+			10 & 96086.90  & 7283.71  & 2798.65  & 10082.00 & 86004.54 \\
+			11 & 88584.68  & 7502.22  & 2580.14  & 10082.00 & 78502.32 \\
+			12 & 80857.39  & 7727.29  & 2355.07  & 10082.00 & 70775.04 \\
+			13 & 72898.29  & 7959.11  & 2123.25  & 10082.00 & 62815.93 \\
+			14 & 64700.41  & 8197.88  & 1884.48  & 10082.00 & 54618.05 \\
+			15 & 56256.60  & 8443.81  & 1638.54  & 10082.00 & 46174.24 \\
+			16 & 47559.47  & 8697.13  & 1385.23  & 10082.00 & 37477.11 \\
+			17 & 38601.42  & 8958.04  & 1124.31  & 10082.00 & 28519.07 \\
+			18 & 29374.64  & 9226.78  & 855.57   & 10082.00 & 19292.28 \\
+			19 & 19871.05  & 9503.59  & 578.77   & 10082.00 & 9788.70  \\
+			20 & 10082.36  & 9788.70  & 293.66   & 10082.00 & 0.00     \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	\newpage
+	
+\noindent Si paga el primer trimestre \$40,000, e valor de los pagos disminuye considerablemente hasta \$7,994, ademas de que tambien disminuye el pago de interes. 
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c c c c c c}
+		\hline
+		\textbf{t} & \textbf{Adeudo} & \textbf{Capital} & \textbf{Interés} & \textbf{Pago} & \textbf{Saldo} \\
+		\hline
+		0  & \$150,000.00 &          &          &          & \$150,000.00 \\
+		1  & \$154,500.00 & \$4,500.00  & \$35,500.00  & \$40,000  & \$114,500.00 \\
+		2  & \$117,935.00 & \$36,565.00 & -\$28,571.31 & \$7,994   & \$109,941.31 \\
+		3  & \$113,239.55 & \$4,695.45  & \$3,298.24   & \$7,994   & \$105,245.86 \\
+		4  & \$108,403.24 & \$4,836.31  & \$3,157.38   & \$7,994   & \$100,409.55 \\
+		5  & \$103,421.83 & \$4,981.40  & \$3,012.29   & \$7,994   & \$95,428.14 \\
+		6  & \$98,290.99  & \$5,130.84  & \$2,862.84   & \$7,994   & \$90,297.30 \\
+		7  & \$93,006.22  & \$5,284.77  & \$2,708.92   & \$7,994   & \$85,012.53 \\
+		8  & \$87,562.90  & \$5,443.31  & \$2,550.38   & \$7,994   & \$79,569.22 \\
+		9  & \$81,956.29  & \$5,606.61  & \$2,387.08   & \$7,994   & \$73,962.60 \\
+		10 & \$76,181.48  & \$5,774.81  & \$2,218.88   & \$7,994   & \$68,187.79 \\
+		11 & \$70,233.43  & \$5,948.06  & \$2,045.63   & \$7,994   & \$62,239.74 \\
+		12 & \$64,106.93  & \$6,126.50  & \$1,867.19   & \$7,994   & \$56,113.24 \\
+		13 & \$57,796.64  & \$6,310.29  & \$1,683.40   & \$7,994   & \$49,802.95 \\
+		14 & \$51,297.03  & \$6,499.60  & \$1,494.09   & \$7,994   & \$43,303.35 \\
+		15 & \$44,602.45  & \$6,694.59  & \$1,299.10   & \$7,994   & \$36,608.76 \\
+		16 & \$37,707.02  & \$6,895.43  & \$1,098.26   & \$7,994   & \$29,713.33 \\
+		17 & \$30,604.73  & \$7,102.29  & \$891.40     & \$7,994   & \$22,611.04 \\
+		18 & \$23,289.37  & \$7,315.36  & \$678.33     & \$7,994   & \$15,295.68 \\
+		19 & \$15,754.55  & \$7,534.82  & \$458.87     & \$7,994   & \$7,760.86 \\
+		20 & \$7,993.69   & \$7,760.86  & \$232.83     & \$7,994   & \$0.00 \\
+		\hline
+	\end{tabular}
+	\caption{Tabla de amortización con primer pago trimestral de \$40,000}
+\end{table}
+\newpage
+	
+\vspace{0.45cm}
+\begin{tcolorbox}[colframe=red!70, colback=gray!20, coltitle=white!220!black, title=Pregunta 14]
+El señor Becerril acaba de cumplir 90 años y está solicitando una anualidad de por vida que pague \$10,000.00 USD por año, el primer pago será en un año, hasta que él muera. Él le pide a su nieto, Carlos que analice esto por él.
+
+Carlos encuentra que de acuerdo a datos estadísticos, la probabilidad de que su abuelo muera en alguna edad en particular se ve de la siguiente forma:
+
+Responda las siguientes preguntas:
+	
+	\begin{itemize}
+		\item ¿Cuál es la esperanza de vida del abuelo Becerril?
+		
+		\item ¿Cuál es el valor presente de la anualidad al 8 \% de interés que tiene un tiempo de vida igual a la esperanza de vida del Sr. Becerril? (Para una anualidad con un número de años no entero,
+		utilice promedios.)
+		
+		\item ¿Cuál es el valor presente esperado de la anualidad?
+		
+	\end{itemize}
+\end{tcolorbox}
+
+\section*{Respuesta 14}
+
+\textbf{a) calculo de esperanza.}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{Edad} & \textbf{Prob. Morir} & \textbf{Prob. Acumulada} & \textbf{Prueba de Morir} & \textbf{Flujo Contingente} \\ \hline
+		90  & 0.07 & 7\%   & 93\% & 6.5100\%  \\ \hline
+		91  & 0.08 & 15\%  & 92\% & 13.8000\% \\ \hline
+		92  & 0.09 & 24\%  & 91\% & 21.8400\% \\ \hline
+		93  & 0.10 & 34\%  & 90\% & 30.6000\% \\ \hline
+		94  & 0.10 & 44\%  & 90\% & 39.6000\% \\ \hline
+		95  & 0.10 & 54\%  & 90\% & 48.6000\% \\ \hline
+		96  & 0.10 & 64\%  & 90\% & 57.6000\% \\ \hline
+		97  & 0.10 & 74\%  & 90\% & 66.6000\% \\ \hline
+		98  & 0.10 & 84\%  & 90\% & 75.6000\% \\ \hline
+		99  & 0.07 & 91\%  & 93\% & 84.6300\% \\ \hline
+		100 & 0.05 & 96\%  & 95\% & 91.2000\% \\ \hline
+		101 & 0.04 & 100\% & 96\% & 96.0000\% \\ \hline
+	\end{tabular}
+	\label{tab:prob_morir}
+\end{table}
+
+\noindent Dada la siguiente tabla se puede ver que se tienen valores, de probabilidad acumulada que es la suma continua de la probabilidad de morir dada la edad, a su vez la esperanza matematica que esl promedio o el valor esperado que tiene de que viva el Señor Becerril, para que pueda aprovechar el seguro suponiendo que vivira esos años, por lo dado el calculo del promedio tenemos que el valor esperado o la edad que se tiene contemplada con mayor probabilidad que viva el Abuelo Becerril es de 95.5 años.
+
+\newpage
+
+\textbf{b) calculo de valor presente de la anualidad y trayendo a valor presente el flujo ponderado de probabilidad.}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{cccccccc}
+		\toprule
+		Edad & Prob. Morir & Prob. Acum. & Prob. Vivir & Flujo Con. & Flujo & Flujo Pond. & Flujo Desc. \\
+		&                      &                          &                      &                            &  &   &              \\
+		\midrule	
+		90  & 0.07 & 7\%  & 93\% & 6.5100\% & -\$46,228.80 &  -         &     -      \\
+		91  & 0.08 & 15\% & 92\% & 13.8000\% & \$10,000.00 & \$9,200.00 & \$8,518.52 \\
+		92  & 0.09 & 24\% & 91\% & 21.8400\% & \$10,000.00 & \$9,100.00 & \$7,801.78 \\
+		93  & 0.10 & 34\% & 90\% & 30.6000\% & \$10,000.00 & \$9,000.00 & \$7,144.49 \\
+		94  & 0.10 & 44\% & 90\% & 39.6000\% & \$10,000.00 & \$9,000.00 & \$6,615.27 \\
+		95  & 0.10 & 54\% & 90\% & 48.6000\% & \$10,000.00 & \$9,000.00 & \$6,125.25 \\
+		96  & 0.10 & 64\% & 90\% & 57.6000\% & \$10,000.00 & \$9,000.00 & \$5,671.53 \\
+		97  & 0.10 & 74\% & 90\% & 66.6000\% & \$10,000.00 & \$9,000.00 & \$5,251.41 \\
+		98  & 0.10 & 84\% & 90\% & 75.6000\% & \$10,000.00 & \$9,000.00 & \$4,862.42 \\
+		99  & 0.07 & 91\% & 93\% & 84.6300\% & \$10,000.00 & \$9,300.00 & \$4,652.32 \\
+		100 & 0.05 & 96\% & 95\% & 91.2000\% & \$10,000.00 & \$9,500.00 & \$4,400.34 \\
+		101 & 0.04 & 100\%& 96\% & 96.0000\% & \$10,000.00 & \$9,600.00 & \$4,117.28 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+	
+Podemos ver que la sumatoria del flujo descontado da un total de \$17,440.19 y la del flujo ponderado de probabilidad de \$18,358.09, para el calculo de flujo descontado se usa la metologia de calcular el valor presente del flujo ponderado de probabilidad (probabilidad de vivir * pago) quedando: $\dfrac{FLP}{(1+i)^n}$, el flujo contingente es (prob. acum * prob vivir) \\ 
+
+FLP = flujo descontado de pago.
+
+\begin{table}[h!]
+
+	\begin{tabular}{cccccccc}
+		\toprule
+		Edad & Prob. Morir & Prob. Acum. & Prob. Vivir & Flujo Cont. & Flujo & Flujo Pond. & Flujo Desc. \\
+		&                      &                          &                      &                            &  &   &             \\
+		\midrule
+		   90  & 0.07 & 7\%  & 93\% & 6.5100\% & -\$46,228.80 & -        & -        \\
+		   91  & 0.08 & 15\% & 92\% & 13.8000\% & \$10,000.00 & \$9,200.00 & \$8,518.52 \\
+		   92  & 0.09 & 24\% & 91\% & 21.8400\% & \$10,000.00 & \$9,100.00 & \$7,801.78 \\
+		   93  & 0.10 & 34\% & 90\% & 30.6000\% & \$10,000.00 & \$9,000.00 & \$7,144.49 \\
+		   94  & 0.10 & 44\% & 90\% & 39.6000\% & \$10,000.00 & \$9,000.00 & \$6,615.27 \\
+		   95  & 0.10 & 54\% & 90\% & 48.6000\% & \$10,000.00 & \$9,000.00 & \$6,125.25 \\
+		  96  & 0.10 & 64\% & 90\% & 57.6000\% & \$10,000.00 & \$9,000.00 & \$5,671.53 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Por ultimo trayendo todos los Flujos a Ponderados que previamente fueron calculados se hace una sumatoria de los mismos, pero solamente de los años que estan dentro del rango que puede vivir el abuelo, osea los valores menor igual al de la esperanza por lo que al limpiar los datos que estan mas alejados del valor promedio, tenemos una informacion mas precisa o una estimacion mas acertada sobre lo mas probable que puede ocurrir dandonos un total del Valor Presente de $\$65,160.60$
+
+\section*{7. Especialización de la Economía en las Finanzas}
+
+La especialización es la piedra central en la comprensión de los problemas, es el primer paso en la ruta hacia las respuestas que demanda la realidad. La selección de material educativo asertivo y la atención a los detalles correctos aleja a nuestro material de los otros cursos express. Nuestro objetivo es vincular la academia con aplicaciones de la realidad imperante. Nos queda claro que con claridad, constancia y transparencia, se construye un camino intelectual sincero que beneficie a quienes se comprometan en la
+materia. En las clases sucesivas, nos especializaremos en la resolución de casos de estudio mediante rutinas de programación.
+	
+\section*{8. Bibliografía recomendada}	
+
+\begin{itemize}
+	\item Kellison, S.(2009). The Theory of Interest, 2nd. ed., Irwin/McGraw-Hill, U.S.
+	
+	\item Chiang, A.(2005). "Métodos fundamentales de Economía Matemática", Prentice Hall.
+	
+	\item Hull J. C.(2006). Options, Futures and Others Derivatives. Ninth Edition. Pearson Prentice Hall.
+	
+	\item Ross, S. A. et al,(2010). Corporate Finance. McGraw-Hill. 4th edition, U.S.
+	
+	\item Wilmott, Paul.(2000). Paul Wilmott on quantitative finance. Edit: Wiley England. Volume 2.
+\end{itemize}
+
+\end{document}
