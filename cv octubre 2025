@@ -1,0 +1,105 @@
+\documentclass[11pt,a4paper,sans]{moderncv}
+\moderncvstyle{banking}
+\moderncvcolor{black}
+\nopagenumbers{}
+\usepackage[utf8]{inputenc}
+\usepackage{ragged2e}
+\usepackage[scale=0.915]{geometry}
+\usepackage{import}
+\usepackage{multicol}
+\usepackage{import}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\name{Jorge Diego}{Valdez Fonseca}
+\newcommand*{\customcventry}[7][.13em]{
+\begin{tabular}{@{}l}
+{\bfseries #4} \
+{\itshape #3}
+\end{tabular}
+\hfill
+\begin{tabular}{l@{}}
+{\bfseries #5} \
+{\itshape #2}
+\end{tabular}
+\ifx&#7&%
+\else{\
+\begin{minipage}{\maincolumnwidth}%
+\small#7%
+\end{minipage}}\fi%
+\par\addvspace{#1}}
+\begin{document}
+\makecvtitle
+\vspace*{-16mm}
+\begin{center}
+    \textbf{Estudiante de Economía y Finanzas}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ c c c }
+    \faMobile\enspace +55 4873 8496 & \enspace diegovaf181199@gmail.com  & \enspace \faHome\enspace CDMX, México \\
+    
+    \faLinkedin\enspace \href{https://www.linkedin.com/in/diegovalfo0192}{\color{blue}diegovalfo0192} & 
+    \faGithub\enspace \href{https://github.com/diiegood}{\color{blue}github.com/diiegood} & \enspace 
+\end{tabular}
+\end{center}
+
+
+\section{Sobre mi:}
+{Estudiante de último semestre de Economía, con enfoque a finanzas y al area cuantitativa. Poseo sólidos conocimientos en mercados financieros, modelaje financiero, análisis de estados financieros. Así como un dominio de conocimientos en el ámbito bursátil e inversiones usando como apoyo herramientas como Python, SQL, Excel Avanzado y R Studio.
+
+\begin{itemize}
+    \item Participé en el Reto Actinver 2024 con un desempeño destacado, obteniendo el lugar 30. \vspace*{-0.9mm}
+    \item Participación actual en el Reto Actinver 2025.\vspace*{-0.9mm}
+    \item Experiencia de un año invirtiendo en GBM, comprando capitales y aplicando conocimientos de análisis fundamental y modelaje financiero.
+\end{itemize}
+}
+
+\section{Habilidades Personales}
+{ Comunicacion Efectiva - Liderazgo - Proactividad - Manejo en situaciones criticas - Autodidacta - Aprendizaje Continuo - Pensamiento Analitico - Comunicacion efectiva - Atencion al detalle - Trabajo en equipo - Habilidades sociales - Sociable - Resiliencia - Determinacion - Cumplimiento de objetivos }
+
+\section{Habilidades tecnicas}
+{Python (Modelado Financiero y Analisis de datos)  -   R Studio -   SQL - Visual Basic - Power Bi - Microsfot Excel - Paqueteria Office - LaTex - Contabilidad - Estadistica y Probabilidad - Finanzas Bursatiles -  Finanzas Corporativas - Riesgos Financieros - Excel Avanzado  }
+
+\section{Experiencia}
+\customcventry{03/2025 ‐ 09/2025}{{\color{blue}\href{https://google.com/}{}}}{Provedor de Servicio Social Banco de Mexico}{ CDMX }{}{
+{\begin{itemize}[leftmargin=0.6cm, label={\textbullet}]
+\item Actividades relacionadas a Analisis de datos y Visualizacion de datos, programando codigos en Spyder y R-Studio que involucraban grandes volumenes de informacion y modelaje estadistico.
+\item Estimacion de empresas mexicanas que cotizan como ADRs, Analizando tanto la capitalizacion bursatil como el pago de dividendos y el analisis de estadios financieros.
+\item Apoyo en la realizacion de modelos econometricos para el TCR y limpieza de bases de datos utilizando Spyder.
+\end{itemize}}}
+\vspace*{1.5mm}
+\customcventry{09/2025 ‐ actualidad}{{\color{blue}\href{https://google.com/}{}}}{Practicas Profesionales, Grupo Financiero Inbursa}{ CDMX }{}{
+{\begin{itemize}[leftmargin=0.6cm, label={\textbullet}]
+\item Apoyo en la liquidacion de operaciones de swaps y forwards.
+\item Conciliaciones de las cuentas financieras de swaps, calculo de cupones de swaps.
+\item Supervision en la operacion internacional de swaps, confirmacion en los pagos de transferencias para las contrapartes, llamadas de Margen.
+\end{itemize}}}
+
+
+\section{Educacion}
+\customcventry{2021-2026}{Licenciatura en Economia y Finanzas}{Universidad Nacional Autonoma de Mexico}{}{}
+{Durante la carrera he desempeñado diversas actividades como practicas de Valuacion de empresas, Analisis de Cash Flows , Analis de Estado de Resultados, Balance General, Realizacion problemas de Matematicas Financieros , utilizando Excel con Visual Basic, Solver, ademas de; Valuacion de Bonos, Calculo de Convexidad y Duracion, Valuacion de Opciones, utilizando el modelo Binomial y Black-Scholes, calculo de griegas, cobertura en futuros, tanto en Excel como en Python, modelos financieros como Simulacioes de Monte Carlo, CAPM, Frontera Eficiente, sharpe ratio, Markowitz, Modelo VaR , C-VaR, GARCH, EGARCH, etc. }
+
+\section{Cursos \& Certificaciones}
+{\begin{itemize}[label=\textbullet]
+      \item 	Curso de Mercado de Valores y Derivados, Escuela Bolsa Mexicana. (Agosto 2024)   
+      \item 	Financial Markets, Yale University. (Octubre 2024)  
+      \item 	Curso de Python para Economista  Facultad de Economia, UNAM.  (Enero 2025 ) 
+      \item 	Introduction to Portfolio Construction and Analysis with Python, EDHEC Business School . (Julio 2025 ) 
+       \item 	Advanced Portfolio Construction and Analysis with Python. EDHEC Business School . (Agosto 2025 )  
+       \item 	Especializacion: Mathematics for Machine Learning Imperial College London. (en curso)  
+  \end{itemize}} 
+
+
+
+\section{Idiomas}
+\begin{itemize}[leftmargin=0.6cm, label={}]
+    \item 
+    \begin{tabular}{ l l }
+        \textbf{Español:} Nativo & \hspace{1.5cm}\textbf{Inglés:} Reading 85\% \hspace{0.7cm}Speaking 75\%\hspace{0.7cm}Listening 75\%\hspace{0.7cm}Writing 80\%\\
+    \end{tabular}
+\end{itemize}
+
+
+\end{document}
